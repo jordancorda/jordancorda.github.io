@@ -637,7 +637,7 @@ html{scroll-padding-top:0}
   margin:0;
 }
 @media(max-width:760px){
-  .hero-content{transform:translateX(-10px)}
+  .hero-content{transform:translateX(-18px)}
   .album-story{padding-top:0}
   .album-credits .lineup{grid-template-columns:1fr}
 }
@@ -682,4 +682,30 @@ html{scroll-padding-top:0}
 }
 @media(max-width:400px){
  .hero h1{font-size:clamp(29px,7.6vw,35px);letter-spacing:.025em;transform:scaleX(.94)}
+}
+
+/* V11b — conserva le correzioni zoom già approvate.
+   Il ritratto mantiene ESATTAMENTE proporzioni, ritaglio e posizione della V10. */
+.music-section,.press-section,#records {
+  min-height:0;
+  height:auto;
+}
+.music-section {
+  padding-top:clamp(66px,7vw,105px);
+  padding-bottom:clamp(68px,7vw,110px);
+}
+.press-section {
+  justify-content:flex-start;
+  padding-top:clamp(70px,7vw,112px);
+  padding-bottom:clamp(70px,7vw,112px);
+}
+#records {padding-top:clamp(70px,7vw,112px)}
+
+/* Più distanza visiva dal nome: spostiamo SOLO il testo verso sinistra.
+   La foto NON cambia dimensione, ritaglio, posizione o maschera. */
+@media (min-width:761px) {
+  .hero-content {transform:translateX(calc(-14px - clamp(32px,3.4vw,53px)))}
+}
+@media (max-width:760px) {
+  .music-section,.press-section,#records {min-height:0;height:auto}
 }
