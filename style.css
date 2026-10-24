@@ -709,3 +709,16 @@ html{scroll-padding-top:0}
 @media (max-width:760px) {
   .music-section,.press-section,#records {min-height:0;height:auto}
 }
+
+/* V11d — navigazione persistente: solo la barra superiore diventa sticky.
+   Nessuna modifica a foto, tipografia, contenuti o spazi tra le sezioni. */
+.site-head {
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+/* Lascia visibili i titoli raggiunti dal menu anche con la barra fissa. */
+html {scroll-padding-top:78px}
+@media (max-width:760px) {
+  html {scroll-padding-top:116px}
+}
