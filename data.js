@@ -72,45 +72,6 @@ window.JC_EPK_DATA = {
       "local_cover": "covers/rizoma-cover.jpg"
     }
   ],
-  "events": [
-    {
-      "date": "2026-10-29",
-      "project": "The Blue Prospective",
-      "venue": "Museo della Ceramica della Tuscia",
-      "city": "Viterbo, IT",
-      "url": "https://www.cheventi.it/eventi/2026-blue-prospettive-paolo-recchia-andrea-tommaso-mellace-e-jordan-corda-viterbo-vt/",
-      "time": "18:00"
-    },
-    {
-      "date": "2026-10-30",
-      "project": "Jordan Corda Trio",
-      "venue": "Palacongressi",
-      "city": "Agrigento, IT",
-      "url": "https://parchiarcheologici.regione.sicilia.it/blog/valle-dei-templi-al-via-i-venerdi-jazz-al-palacongressi-accompagnati-da-sette-concerti-a-ingresso-gratuito/",
-      "time": "19:30"
-    },
-    {
-      "date": "2026-11-06",
-      "project": "Jordan Corda Trio feat. Nicola Angelucci",
-      "venue": "Boogie Club",
-      "city": "Roma, IT",
-      "url": "https://www.boogieclub.it/eventi/jordan-corda-trio-feat-nicola-angelucci-boogie-club-jazz-friday/"
-    },
-    {
-      "date": "2026-12-01",
-      "project": "Luca Mannutza Quintet",
-      "venue": "Alexanderplatz Jazz Club",
-      "city": "Roma, IT",
-      "url": ""
-    },
-    {
-      "date": "2027-02-12",
-      "project": "Jordan Corda Trio feat. Makar Novikov & Jordan Dinsdale",
-      "venue": "Donau115",
-      "city": "Berlin, DE",
-      "url": "https://www.donau115.de/"
-    }
-  ],
   "bio": {
     "it": [
       "Jordan Corda è un vibrafonista e compositore jazz originario della Sardegna, attivo nella scena jazz italiana e internazionale.",

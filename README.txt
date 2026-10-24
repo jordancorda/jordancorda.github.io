@@ -1,38 +1,28 @@
-JORDAN CORDA — AWAKENINGS | EPK
-RITORNO ALLE ORIGINI · BASE GRAFICA ORIGINALE v2
+JORDAN CORDA — AWAKENINGS | EPK MINIMAL RAFFINATO V7
 24 ottobre 2026
-AGGIORNAMENTO STAMPA — UK VIBE, STEVE WILLIAMS, 5/5
 
-Per aprire:
-1. Estrarre l'intero ZIP.
-2. Aprire index.html (Safari / Chrome).
-3. La grafica e tutte le foto/copertine funzionano offline; Spotify e YouTube richiedono Internet e possono essere limitati dall'apertura tramite file://.
+Versione di prova, NON caricata su GitHub Pages.
+Sito online attuale: https://jordancorda.github.io/
 
-Contenuti:
-- index.html: sezioni principali e collegamenti all'album e video
-- style.css: stile derivato direttamente dalla versione originale v2; nessuna colonna laterale o numerazione
-- data.js: 7 album, copertine, concerti, bio, stampa e link
-- app.js: selezione lingua e aggiornamento automatico della lista dei concerti in base alla data italiana
-- assets: copertina Awakenings, altre 7 copertine originali, fotografie originali
+Aprire index.html dopo aver estratto l’intero ZIP.
 
-RISPETTO A v2:
-- homepage ancora più chiara sull'identità di Jordan Corda, ma con UN SOLO titolo forte, non una nuova composizione grafica
-- solo 2 fotografie visibili: Federica Di Benedetto nella prima schermata e Alex Chiapparelli in bio
-- copertina Awakenings presente una sola volta (sezione album)
-- aggiornati crediti, discografia, date, recensioni e testi bilingue
-- nessuna numerazione di sezione
+Ultimi interventi sulla V6:
+- JORDAN CORDA: maggiore spaziatura e peso più leggero, colori/foto invariati.
+- Credito fotografico visibile rimosso dalla homepage e dal footer (non modifica i diritti d'autore).
+- Sezione album: stessa copertina, stesso testo e formazione, impaginati in modo più leggibile.
+- Crediti discreti senza linea separatrice; lettore Spotify autentico e ascoltabile subito dopo.
+- Bordo esterno del contenitore Spotify mascherato per integrarlo visivamente.
+- Navigazione Awakenings centrata a schermo su desktop; su mobile non mostra le sezioni adiacenti quando possibile.
 
-In vista della pubblicazione gratuita su GitHub Pages: verificare permessi delle immagini,
-attualità dei concerti, eventuali link cambiati e funzionamento degli embed su HTTPS.
-Non è stato pubblicato nulla online.
+IMPORTANTI LIMITI:
+Il contenuto e i controlli interni al player Spotify sono di Spotify: non è possibile
+modificarne a piacere lo sfondo o tutte le linee dagli stili del sito.
+Su file:// Safari può bloccare o limitare Spotify/YouTube: verificarli sul sito HTTPS.
 
-RECENSIONE IN PRIMO PIANO
-UK Vibe, Steve Williams, 23 ottobre 2026 — 5/5
-https://ukvibe.org/album_reviews/jordan-corda/
-La frase principale è un estratto letterale dall’articolo, senza traduzione, e Paris-Move resta visibile come citazione secondaria.
+Contenuti approvati invariati:
+UK Vibe Steve Williams 5/5; Paris-Move; link a stampa e altre recensioni;
+discografia con sette copertine e link Spotify; biografia IT/EN; due video
+Awakenings t7Ljt7eULN0 e vibrafono solo VmVXGVGsmdA; link email mailto.
 
-Aggiornamento del 24 ottobre 2026
-- UK Vibe / Steve Williams, 23 ottobre 2026, voto 5/5, come citazione principale della sezione stampa.
-- Email non mostrata in pagina: pulsante bilingue che apre il client di posta preindirizzato a Jordan Corda.
-- Nessuna modifica all’impostazione grafica della versione 2 approvata.
-- La destinazione dell’email rimane tecnicamente leggibile nel link mailto; non è un occultamento anti-spam.
+Per aggiornare il sito su GitHub Pages: sostituire solo i file modificati,
+oppure caricare contenuto ZIP nella root del repository preservando cartelle.

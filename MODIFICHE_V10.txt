@@ -1,0 +1,7 @@
+EPK MINIMAL RAFFINATO — V10
+
+Modifiche rispetto alla V9:
+- JORDAN CORDA rimane in una riga, nella stessa posizione generale, ma usa una resa più vicina alle linee sottili e alla spaziatura del titolo AWAKENINGS in copertina. Il font originale della copertina non è stato identificato con certezza.
+- A.MA Records · 2026 rimosso dalla presentazione visibile della sezione Awakenings.
+- A.MA Records · 2026 aggiunto nel pannello espandibile Formazione e crediti / Personnel and credits, con etichetta bilingue.
+- Nessun altro contenuto o navigazione alterati; la pubblicazione su GitHub resta separata.

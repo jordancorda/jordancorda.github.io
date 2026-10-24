@@ -1,0 +1,10 @@
+EPK Minimal Raffinato V8 — 24 ottobre 2026
+
+Base: V7 (tutte le fotografie, copertine, biografia, link, recensioni, due video, contatti mantenuti).
+- Homepage: nome su una riga, carattere sottile/condensato e nuovo ordine: nome, ruolo, Spotify/Video.
+- Menu: ripristinata la voce Video (Videos in inglese).
+- Awakenings: nuova impaginazione editoriale; copertina e crediti sotto a sinistra, testo e player a destra.
+- Spotify: embed ufficiale ascoltabile, bordi esterni ritagliati e resi meno invadenti; gli elementi interni sono di Spotify e non modificabili dal sito.
+- Press: altezza minima di una schermata, così non appare la testata Discografia dal basso quando la sezione è selezionata.
+- Discografia: allineamento del collegamento al vero inizio della sezione.
+- Sito GitHub già pubblicato: non toccato.

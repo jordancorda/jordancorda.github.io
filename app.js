@@ -3,50 +3,77 @@
 const d=window.JC_EPK_DATA;
 const $=s=>document.querySelector(s);
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-const t={
- it:{navAlbum:'Album',navWatch:'Video',navLive:'Concerti',navPress:'Stampa',navRecords:'Discografia',navAbout:'Biografia',navContact:'Contatti',heroLabel:'VIBRAFONISTA · COMPOSITORE',heroIntro:'Con Awakenings (A.MA Records, 2026) presenta il suo primo album da leader: dodici brani originali tra memoria, trasformazione e improvvisazione collettiva.',heroListen:'Ascolta Awakenings ↗',heroWatch:'Guarda il video ↓',albumTitle:'Il disco',albumIntro:'Un album sulle diverse forme di risveglio che attraversano la vita.',albumText:'Dodici brani originali che attraversano memoria, Sardegna e trasformazione personale, interpretati da un quintetto in cui scrittura e improvvisazione dialogano.',vibes:'Vibrafono, composizioni',piano:'Pianoforte',sax:'Sassofono contralto',bass:'Contrabbasso',drums:'Batteria · Produzione',openSpotify:'Ascolta l’album su Spotify ↗',watchTitle:'Video',videoTitle:'Awakenings — video di presentazione',videoInfo:'Il video di presentazione dell’album.',youtubeWatch:'Apri su YouTube ↗',solo:'Video: vibrafono solo ↗',channel:'Canale YouTube ↗',liveTitle:'Prossimi concerti',pressTitle:'Stampa',recordsTitle:'Discografia',discIntro:'Una selezione di registrazioni realizzate con altri gruppi e musicisti.',aboutTitle:'Biografia',contactTitle:'Booking & contatti',contactInfo:'Per concerti, festival, collaborazioni e richieste stampa.',emailAction:'Scrivi una email ↗',spotify:'Spotify ↗',details:'Dettagli ↗',eventInfo:'Informazioni ↗',noUpcoming:'Nessuna data futura attualmente in programma.',reviewSource:'Leggi la recensione ↗',otherPress:'Altre recensioni',pressArchive:'Altre recensioni sul sito dell’etichetta ↗'},
- en:{navAlbum:'Album',navWatch:'Video',navLive:'Live',navPress:'Press',navRecords:'Discography',navAbout:'Biography',navContact:'Contact',heroLabel:'VIBRAPHONIST · COMPOSER',heroIntro:'With Awakenings (A.MA Records, 2026), he presents his first album as leader: twelve original pieces shaped by memory, transformation and collective improvisation.',heroListen:'Listen to Awakenings ↗',heroWatch:'Watch the video ↓',albumTitle:'The album',albumIntro:'An album about the moments of awakening that shape a life.',albumText:'Twelve original pieces explore memory, Sardinia and personal transformation, performed by a quintet in which composition and improvisation are in constant dialogue.',vibes:'Vibraphone, compositions',piano:'Piano',sax:'Alto saxophone',bass:'Double bass',drums:'Drums · Production',openSpotify:'Listen to the album on Spotify ↗',watchTitle:'Video',videoTitle:'Awakenings — release video',videoInfo:'The official video introducing the album.',youtubeWatch:'Watch on YouTube ↗',solo:'Solo vibraphone video ↗',channel:'YouTube channel ↗',liveTitle:'Upcoming concerts',pressTitle:'Press',recordsTitle:'Discography',discIntro:'Selected recordings with other ensembles and musicians.',aboutTitle:'Biography',contactTitle:'Booking & contact',contactInfo:'For concerts, festivals, collaborations and press enquiries.',emailAction:'Send an email ↗',spotify:'Spotify ↗',details:'Album details ↗',eventInfo:'Event details ↗',noUpcoming:'No upcoming performances currently listed.',reviewSource:'Read original review ↗',otherPress:'Further coverage',pressArchive:'More reviews on the label’s website ↗'}
+const tr={
+ it:{navVideo:'Video',navMusic:'Awakenings',navPress:'Stampa',navRecords:'Discografia',navBio:'Bio',navContact:'Contatti',role:'VIBRAFONISTA · COMPOSITORE',listen:'Spotify',watch:'Video',musicTitle:'L’album',albumText:'Dodici composizioni originali tra memoria, Sardegna e trasformazione personale. Un quintetto, tra scrittura e improvvisazione.',spotifyLink:'Apri su Spotify',spotifyPlay:'Ascolta Awakenings',spotifyReveal:'Ascolta su Spotify',soloVideo:'Vibrafono solo',channelLink:'Canale YouTube',lineupTitle:'Formazione e crediti',recordLabel:'Etichetta',vibes:'Vibrafono · Composizioni',piano:'Pianoforte',sax:'Sassofono contralto',bass:'Contrabbasso',drums:'Batteria · Produzione',youtubeLink:'Apri su YouTube ↗',soloLink:'Vibrafono solo ↗',pressTitle:'Stampa',recordsTitle:'Discografia',recordsLabel:'Registrazioni selezionate',bioTitle:'Biografia',bioMore:'Leggi la biografia completa',contactTitle:'Contatti',emailAction:'Scrivi una email',copyright:'',pressRead:'Leggi la recensione',allReviews:'Tutte le recensioni'},
+ en:{navVideo:'Videos',navMusic:'Awakenings',navPress:'Press',navRecords:'Discography',navBio:'Bio',navContact:'Contact',role:'VIBRAPHONIST · COMPOSER',listen:'Spotify',watch:'Videos',musicTitle:'The album',albumText:'Twelve original compositions exploring memory, Sardinia and personal transformation. A quintet balancing composition and improvisation.',spotifyLink:'Open in Spotify',spotifyPlay:'Play Awakenings',spotifyReveal:'Listen on Spotify',soloVideo:'Solo vibraphone',channelLink:'YouTube channel',lineupTitle:'Personnel and credits',recordLabel:'Label',vibes:'Vibraphone · Compositions',piano:'Piano',sax:'Alto saxophone',bass:'Double bass',drums:'Drums · Production',youtubeLink:'Watch on YouTube ↗',soloLink:'Solo vibraphone ↗',pressTitle:'Press',recordsTitle:'Discography',recordsLabel:'Selected recordings',bioTitle:'Biography',bioMore:'Read full biography',contactTitle:'Contact',emailAction:'Send an email',copyright:'',pressRead:'Read the review',allReviews:'All reviews'}
 };
-function renderRecords(lang){
- const text=t[lang];
- $('#recordList').innerHTML=d.albums.map(a=>`<article class="record"><img class="record-cover" src="assets/${escapeHTML(a.local_cover)}" alt="${escapeHTML(a.title)} — original album cover" loading="lazy"><div class="record-info"><h3>${escapeHTML(a.title)}</h3><div class="project">${escapeHTML(a.project)}</div><div class="meta">${escapeHTML(a.year)} · ${escapeHTML(a.label)}</div><div class="record-links"><a href="${escapeHTML(a.spotify)}" target="_blank" rel="noopener noreferrer">${text.spotify}</a>${a.url&&a.url!==a.spotify?`<a href="${escapeHTML(a.url)}" target="_blank" rel="noopener noreferrer">${text.details}</a>`:''}</div></div></article>`).join('');
+function records(){
+ $('#recordList').innerHTML=d.albums.map(a=>`<article class="record"><a class="record-cover" href="${escapeHTML(a.spotify)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(a.title)} — Spotify"><img src="assets/${escapeHTML(a.local_cover)}" loading="lazy" alt="${escapeHTML(a.title)} — album cover"></a><h3><a href="${escapeHTML(a.spotify)}" target="_blank" rel="noopener noreferrer">${escapeHTML(a.title)}</a></h3><p>${escapeHTML(a.project)} · ${escapeHTML(a.year)}</p></article>`).join('');
 }
-function romeDateToday(){
- const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
- const part=x=>parts.find(p=>p.type===x)?.value;
- return `${part('year')}-${part('month')}-${part('day')}`;
+function press(){
+ const uk=d.press.find(x=>x.name==='UK Vibe');
+ const paris=d.press.find(x=>x.name==='Paris-Move');
+ const others=d.press.filter(x=>!['UK Vibe','Paris-Move'].includes(x.name));
+ const langCode=document.documentElement.lang==='en'?'en':'it';
+ const allReviewsLabel=tr[langCode].allReviews;
+ const allReviewsUrl='https://www.amaedizioni.it/artist?id=55';
+ $('#pressContent').innerHTML=`<div class="press-feature">
+ <figure class="press-card press-primary"><blockquote lang="en">“${escapeHTML(uk.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams · 5/5</span></a></figcaption></figure>
+ <figure class="press-card press-secondary"><blockquote lang="en">“${escapeHTML(paris.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(paris.url)}" target="_blank" rel="noopener noreferrer">Paris-Move <span>· Thierry De Clemensat</span></a></figcaption></figure>
+ </div><div class="press-notes">${others.map(item=>`<a href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.name)}</a>`).join('')}<a href="${allReviewsUrl}" target="_blank" rel="noopener noreferrer">${allReviewsLabel}</a></div>`;
 }
-function renderEvents(lang){
- const today=romeDateToday();
- const list=d.events.filter(e=>e.date>=today).sort((a,b)=>a.date.localeCompare(b.date));
- $('#eventList').innerHTML=list.length?list.map(e=>{
-  const year=+e.date.substring(0,4),month=+e.date.substring(5,7)-1,day=+e.date.substring(8,10);
-  const formatted=new Intl.DateTimeFormat(lang==='it'?'it-IT':'en-GB',{day:'2-digit',month:'short',year:'numeric',timeZone:'Europe/Rome'}).format(new Date(Date.UTC(year,month,day,12)));
-  const loc=[e.venue,e.city].filter(Boolean).join(' · ')+(e.time?' · '+e.time:'');
-  return `<div class="show"><span class="show-date">${escapeHTML(formatted)}</span><div class="show-title">${escapeHTML(e.project)}</div><div class="show-location">${escapeHTML(loc)}</div>${e.url?`<a href="${escapeHTML(e.url)}" rel="noopener noreferrer" target="_blank">${t[lang].eventInfo}</a>`:''}</div>`;
- }).join(''):`<p class="no-upcoming">${t[lang].noUpcoming}</p>`;
+function lang(code){
+ const copy=tr[code];document.documentElement.lang=code;
+ document.querySelectorAll('[data-t]').forEach(node=>{const val=copy[node.dataset.t];if(val!==undefined)node.textContent=val});
+ $('#bioShort').textContent=d.bio[code][0];
+ $('#bioLong').innerHTML=d.bio[code].slice(1).map(p=>`<p>${escapeHTML(p)}</p>`).join('');
+ for(const id of ['it','en'])$('#'+id).setAttribute('aria-pressed',id===code?'true':'false');
+ press();
+ try{localStorage.setItem('jc_epk_language',code)}catch(e){}
 }
-function renderPress(lang){
- const items=d.press;
- const quote=items.find(p=>p.kind==='quote');
- const highlights=items.filter(p=>p.kind==='headline'||p.kind==='secondary-quote');
- const others=items.filter(p=>p.kind==='link');
- const q=quote?`<div class="press-lead"><blockquote lang="en">“${escapeHTML(quote.excerpt)}”</blockquote><a class="press-by" href="${escapeHTML(quote.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(quote.name)}${quote.rating?` · ${escapeHTML(quote.rating)}`:''} — ${escapeHTML(quote.author)} ↗</a></div>`:'';
- const h=`<div class="press-secondary">${highlights.map(p=>`<div class="press-mention"><a href="${escapeHTML(p.url)}" target="_blank" rel="noopener noreferrer">${p.kind==='secondary-quote'?`“${escapeHTML(p.excerpt)}”` : escapeHTML(p.excerpt)} ↗</a><small>${escapeHTML(p.name)} · ${escapeHTML(p.author)}</small></div>`).join('')}</div>`;
- const rest=`<div class="press-others">${others.map(p=>`<a href="${escapeHTML(p.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(p.name)} ↗</a>`).join('')}</div>`;
- $('#pressContent').innerHTML=q+h+rest;
+records();press();
+// Spotify album preview is embedded directly and remains playable within the page.
+document.querySelectorAll('.video-box').forEach(box=>{
+ const button=box.querySelector('button');
+ button?.addEventListener('click',()=>{
+  const iframe=document.createElement('iframe');
+  iframe.title=box.dataset.video==='t7Ljt7eULN0'?'Awakenings — video':'Vibrafono solo — video';
+  iframe.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(box.dataset.video)+'?rel=0&autoplay=1';
+  iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  iframe.referrerPolicy='strict-origin-when-cross-origin';
+  iframe.allowFullscreen=true;
+  box.replaceChildren(iframe);
+ });
+});
+
+function scrollToSection(target, behavior='smooth'){
+ if(!target)return;
+ // Scrolling lands at the beginning of the section, not in the preceding one.
+ const top = Math.round(target.getBoundingClientRect().top + window.scrollY);
+ window.scrollTo({top: Math.max(0,top), behavior});
 }
-function chooseLanguage(lang){
- const tr=t[lang];
- document.documentElement.lang=lang;
- document.querySelectorAll('[data-t]').forEach(el=>{if(Object.hasOwn(tr,el.dataset.t))el.textContent=tr[el.dataset.t]});
- for(const l of ['it','en'])document.getElementById(l).setAttribute('aria-pressed',String(l===lang));
- $('#biography').innerHTML=d.bio[lang].map(p=>`<p>${escapeHTML(p)}</p>`).join('');
- renderEvents(lang);renderRecords(lang);renderPress(lang);
- try{localStorage.setItem('jc_epk_language',lang)}catch(e){}
+
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+ link.addEventListener('click',ev=>{
+  const href = link.getAttribute('href');
+  if(!href || href==='#') return;
+  const target = document.querySelector(href);
+  if(!target) return;
+  ev.preventDefault();
+  scrollToSection(target, 'smooth');
+  if(history.replaceState) history.replaceState(null, '', href);
+  else location.hash = href;
+ });
+});
+if(location.hash){
+ const target = document.querySelector(location.hash);
+ if(target){
+  window.addEventListener('load',()=>scrollToSection(target, 'auto'), {once:true});
+ }
 }
-$('#it').addEventListener('click',()=>chooseLanguage('it'));
-$('#en').addEventListener('click',()=>chooseLanguage('en'));
-let initial='it';try{if(localStorage.getItem('jc_epk_language')==='en')initial='en'}catch(e){}
-chooseLanguage(initial);
+
+$('#it').addEventListener('click',()=>lang('it'));
+$('#en').addEventListener('click',()=>lang('en'));
+let start='it';try{if(localStorage.getItem('jc_epk_language')==='en')start='en'}catch(e){}
+lang(start);
 })();
