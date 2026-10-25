@@ -71,7 +71,9 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
   const target = document.querySelector(href);
   if(!target) return;
   ev.preventDefault();
-  scrollToSection(target, 'smooth');
+  // Il logo deve tornare all'inizio del documento (barra inclusa), non all'inizio di <main>.
+  if(href==='#top') window.scrollTo({top:0, behavior:'smooth'});
+  else scrollToSection(target, 'smooth');
   if(history.replaceState) history.replaceState(null, '', href);
   else location.hash = href;
  });
@@ -79,7 +81,10 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
 if(location.hash){
  const target = document.querySelector(location.hash);
  if(target){
-  window.addEventListener('load',()=>scrollToSection(target, 'auto'), {once:true});
+  window.addEventListener('load',()=>{
+   if(location.hash==='#top') window.scrollTo({top:0, behavior:'auto'});
+   else scrollToSection(target, 'auto');
+  }, {once:true});
  }
 }
 
