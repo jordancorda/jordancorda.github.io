@@ -2,6 +2,16 @@
 window.JC_EPK_DATA = {
   "albums": [
     {
+      "title": "Awakenings",
+      "project": "Jordan Corda",
+      "year": "2026",
+      "label": "A.MA Records",
+      "url": "https://open.spotify.com/album/1NyUnaZ7nl4Ysw7Y28WZMs",
+      "spotify": "https://open.spotify.com/album/1NyUnaZ7nl4Ysw7Y28WZMs",
+      "id": "album-awakenings",
+      "local_cover": "awakenings-cover.jpg"
+    },
+    {
       "title": "Prospettive",
       "project": "The Blue Prospective",
       "year": "2026",
