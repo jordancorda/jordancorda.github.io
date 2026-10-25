@@ -722,12 +722,62 @@ html {scroll-padding-top:78px}
 @media (max-width:760px) {
   html {scroll-padding-top:116px}
 }
+
 /* Spotify e Videos: stesso colore */
 .hero-actions a,
 .hero-actions a:visited {
   color: #bbdce3 !important;
 }
-
 .hero-actions a:hover {
   color: #e7a08d !important;
+}
+
+
+/* V12 Press quadretto: arricchisce solo la sezione stampa.
+   Nessuna modifica a zoom, scorrimento o impostazione generale della pagina. */
+.press-feature{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(28px,4vw,68px);align-items:start}
+.press-aside{display:grid;gap:clamp(24px,2.8vw,34px)}
+.press-tiles{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:clamp(16px,2vw,24px);align-items:end}
+.press-tertiary{max-width:none}
+.press-accent{align-self:end}
+.press-tertiary blockquote{font-size:clamp(19px,1.85vw,24px);line-height:1.34;color:#ece9e6}
+.press-accent blockquote{font-size:clamp(15px,1.45vw,19px);line-height:1.34;color:#cfcac6}
+.press-tertiary figcaption a,.press-accent figcaption a{font-size:11px}
+@media (max-width:1000px){
+  .press-feature{grid-template-columns:1fr;gap:40px}
+  .press-aside{gap:22px}
+}
+@media (max-width:760px){
+  .press-tiles{grid-template-columns:1fr;gap:18px}
+  .press-tertiary blockquote{font-size:clamp(18px,4.7vw,23px)}
+  .press-accent blockquote{font-size:clamp(15px,4.1vw,18px)}
+}
+
+/* Press — gerarchia delle firme, proporzionata ai quattro estratti.
+   Solo testo di giornale/autore; layout, contenuti e comportamento invariati. */
+.press-feature .press-card figcaption a {
+  display: inline-block;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--ice);
+}
+.press-feature .press-card figcaption a span {
+  font-weight: 400;
+  color: var(--muted);
+}
+.press-feature .press-primary figcaption a {
+  font-size: clamp(14px, 1.15vw, 16px);
+}
+.press-feature .press-secondary figcaption a {
+  font-size: clamp(12px, 1vw, 14px);
+}
+.press-feature .press-tertiary figcaption a {
+  font-size: clamp(11.5px, .88vw, 12.5px);
+}
+.press-feature .press-accent figcaption a {
+  font-size: clamp(11px, .82vw, 12px);
+}
+.press-feature .press-card figcaption a:hover {
+  color: var(--coral);
 }

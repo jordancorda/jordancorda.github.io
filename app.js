@@ -17,9 +17,18 @@ function press(){
  const langCode=document.documentElement.lang==='en'?'en':'it';
  const allReviewsLabel=tr[langCode].allReviews;
  const allReviewsUrl='https://www.amaedizioni.it/artist?id=55';
+ const ukFull='I have listened over and over to this release and, for the sake of balance, went looking for fault. I could not find any. Awakenings is a statement by a band who know one another well, making music that is first and foremost enjoyable to them and to the listener. There is no showboating. It’s marvellous.';
+ const ukMid='Awakenings is a statement by a band who know one another well.';
+ const ukMini='There is no showboating. It’s marvellous.';
  $('#pressContent').innerHTML=`<div class="press-feature">
- <figure class="press-card press-primary"><blockquote lang="en">“${escapeHTML(uk.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams · 5/5</span></a></figcaption></figure>
- <figure class="press-card press-secondary"><blockquote lang="en">“${escapeHTML(paris.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(paris.url)}" target="_blank" rel="noopener noreferrer">Paris-Move <span>· Thierry De Clemensat</span></a></figcaption></figure>
+ <figure class="press-card press-primary"><blockquote lang="en">“${escapeHTML(ukFull)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams · 5/5</span></a></figcaption></figure>
+ <div class="press-aside">
+  <figure class="press-card press-secondary"><blockquote lang="en">“${escapeHTML(paris.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(paris.url)}" target="_blank" rel="noopener noreferrer">Paris-Move <span>· Thierry De Clemensat</span></a></figcaption></figure>
+  <div class="press-tiles">
+   <figure class="press-card press-tertiary"><blockquote lang="en">“${escapeHTML(ukMid)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams</span></a></figcaption></figure>
+   <figure class="press-card press-accent"><blockquote lang="en">“${escapeHTML(ukMini)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams</span></a></figcaption></figure>
+  </div>
+ </div>
  </div><div class="press-notes">${others.map(item=>`<a href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.name)}</a>`).join('')}<a href="${allReviewsUrl}" target="_blank" rel="noopener noreferrer">${allReviewsLabel}</a></div>`;
 }
 function lang(code){
