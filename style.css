@@ -808,3 +808,56 @@ html {scroll-padding-top:78px}
     transform: translateX(18vw) scale(1.34);
   }
 }
+
+
+/* Homepage — unico invito all’ascolto, distanziato dalla descrizione.
+   Nessuna modifica alla fotografia, al nome o alla geometria della hero. */
+.hero .hero-actions {
+  margin-top: clamp(150px, 12vw, 178px);
+}
+.hero .hero-actions a,
+.hero .hero-actions a:visited {
+  position: relative;
+  display: inline-block;
+  color: var(--ice) !important;
+  font-size: clamp(12px, .94vw, 14px);
+  font-weight: 400;
+  letter-spacing: .095em;
+  line-height: 1.4;
+  padding: 4px 7px 14px;
+  border: 0;
+  text-decoration: none;
+  transition: color .24s ease, letter-spacing .24s ease;
+}
+.hero .hero-actions a::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  bottom: 4px;
+  height: 1px;
+  background: currentColor;
+  opacity: .46;
+  transform: scaleX(.48);
+  transition: transform .3s ease, opacity .3s ease;
+  transform-origin: center;
+}
+.hero .hero-actions a:hover,
+.hero .hero-actions a:focus-visible {
+  color: #e0f0f3 !important;
+  letter-spacing: .11em;
+}
+.hero .hero-actions a:hover::after,
+.hero .hero-actions a:focus-visible::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+@media (max-width: 760px) {
+  .hero .hero-actions { margin-top: 106px; }
+  .hero .hero-actions a,
+  .hero .hero-actions a:visited { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-actions a,
+  .hero .hero-actions a::after { transition: none; }
+}
