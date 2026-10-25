@@ -22,6 +22,47 @@
 <link rel="stylesheet" href="style.css">
 <script src="data.js" defer></script>
 <script src="app.js" defer></script>
+
+<style id="awakenings-artwork-flip-only">
+/* V12: isolated 3D artwork flip. Existing layout, scrolling, zoom and site CSS stay untouched. */
+.awakenings-art-flip {
+  display:block; position:relative; width:100%; aspect-ratio:1;
+  padding:0; margin:0; border:0; border-radius:0; background:transparent;
+  color:inherit; font:inherit; text-align:inherit; cursor:pointer;
+  perspective:1200px; -webkit-perspective:1200px;
+  -webkit-appearance:none; appearance:none;
+}
+.awakenings-art-flip__inner {
+  display:block; position:absolute; inset:0;
+  transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
+  transition:transform .72s cubic-bezier(.22,.68,.21,1);
+  will-change:transform;
+}
+.awakenings-art-flip__face {
+  position:absolute; inset:0; display:block; overflow:hidden;
+  backface-visibility:hidden; -webkit-backface-visibility:hidden;
+}
+.awakenings-art-flip__face--back {
+  transform:rotateY(180deg); -webkit-transform:rotateY(180deg);
+  background:#0b0b0c;
+}
+.awakenings-art-flip__face img {
+  display:block; width:100%; height:100%; max-width:none;
+  margin:0; padding:0; border:0;
+}
+.awakenings-art-flip__face--front img { object-fit:cover; }
+.awakenings-art-flip__face--back img { object-fit:contain; }
+@media (hover:hover) and (pointer:fine) {
+  .awakenings-art-flip:hover .awakenings-art-flip__inner {transform:rotateY(180deg)}
+}
+.awakenings-art-flip.is-flipped .awakenings-art-flip__inner,
+.awakenings-art-flip:focus-visible .awakenings-art-flip__inner {
+  transform:rotateY(180deg);
+}
+@media (prefers-reduced-motion:reduce) {
+  .awakenings-art-flip__inner {transition:none;will-change:auto}
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#music">Vai al contenuto</a>
@@ -56,7 +97,16 @@
  <section id="music" class="content-section music-section shell" aria-label="Awakenings — album">
   <div class="album-composition">
    <div class="album-artwork">
-    <img src="assets/awakenings-cover.jpg" alt="Copertina originale di Awakenings — Jordan Corda" loading="lazy">
+    <button class="awakenings-art-flip" type="button" aria-label="Awakenings: gira la copertina per vedere il retro / Flip album cover to see the back" aria-pressed="false" title="Flip artwork / Gira la copertina">
+     <span class="awakenings-art-flip__inner">
+      <span class="awakenings-art-flip__face awakenings-art-flip__face--front">
+       <img src="assets/awakenings-cover.jpg" alt="Awakenings — Jordan Corda, front cover" loading="lazy" width="2048" height="2048">
+      </span>
+      <span class="awakenings-art-flip__face awakenings-art-flip__face--back">
+       <img src="assets/awakenings-back-no-barcode.png" alt="Awakenings — back cover with twelve tracks and personnel" loading="lazy" width="1320" height="1191">
+      </span>
+     </span>
+    </button>
     <details class="lineup-details album-credits">
      <summary data-t="lineupTitle">Formazione e crediti</summary>
      <div class="lineup">
@@ -114,5 +164,25 @@
  </section>
 </main>
 <footer class="shell"><span>© Jordan Corda · 2026</span></footer>
+
+<script>
+/* Touch / keyboard support for the album artwork only. */
+(() => {
+  const art = document.querySelector('.awakenings-art-flip');
+  if (!art) return;
+  art.addEventListener('click', (event) => {
+    const mouseWithHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (mouseWithHover && event.detail !== 0) return; // desktop uses hover; keyboard still toggles
+    const flipped = art.classList.toggle('is-flipped');
+    art.setAttribute('aria-pressed', String(flipped));
+  });
+  document.addEventListener('pointerdown', (event) => {
+    if (!art.contains(event.target) && art.classList.contains('is-flipped')) {
+      art.classList.remove('is-flipped');
+      art.setAttribute('aria-pressed', 'false');
+    }
+  });
+})();
+</script>
 </body>
 </html>
