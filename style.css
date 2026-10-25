@@ -861,3 +861,32 @@ html {scroll-padding-top:78px}
   .hero .hero-actions a,
   .hero .hero-actions a::after { transition: none; }
 }
+
+
+/* HERO desktop — prosecuzione reale della fotografia (+42px rispetto
+   all'ultima prova da 46px: estensione totale 88px). La sfumatura finale
+   occupa gli ultimi 210px e termina esattamente nel nero del sito.
+   Il ritratto non può entrare nella sezione #music: la hero lo ritaglia
+   quando la dissolvenza è già completamente opaca.
+   Testo, zoom, fotografia orizzontale e versione mobile invariati. */
+@media (min-width: 761px) {
+  .hero {
+    height: calc(clamp(630px, calc(100svh - 78px), 820px) + 88px);
+    background: var(--bg);
+  }
+  .hero-photo, .hero-inner {
+    height: calc(100% - 88px);
+  }
+  .hero::before {
+    height: 210px;
+    background: linear-gradient(to bottom,
+      rgba(11,11,12,0) 0%,
+      rgba(11,11,12,.03) 13%,
+      rgba(11,11,12,.11) 28%,
+      rgba(11,11,12,.27) 45%,
+      rgba(11,11,12,.52) 64%,
+      rgba(11,11,12,.80) 83%,
+      #0b0b0c 100%
+    );
+  }
+}
