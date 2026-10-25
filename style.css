@@ -781,3 +781,18 @@ html {scroll-padding-top:78px}
 .press-feature .press-card figcaption a:hover {
   color: var(--coral);
 }
+
+
+/* Press: solo Doppio Jazz leggermente più piccolo rispetto a Paris-Move.
+   Nessun cambiamento a layout, spaziature, altre citazioni o altre sezioni. */
+.press-feature .press-tertiary blockquote {
+  font-size: clamp(16px, 1.57vw, 20.4px);
+}
+.press-feature .press-tertiary figcaption a {
+  font-size: clamp(10px, .78vw, 11px);
+}
+@media (max-width: 760px) {
+  .press-feature .press-tertiary blockquote {
+    font-size: clamp(16px, 4vw, 19.5px);
+  }
+}
