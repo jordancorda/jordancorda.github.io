@@ -722,3 +722,12 @@ html {scroll-padding-top:78px}
 @media (max-width:760px) {
   html {scroll-padding-top:116px}
 }
+/* Spotify e Videos: stesso colore */
+.hero-actions a,
+.hero-actions a:visited {
+  color: #bbdce3 !important;
+}
+
+.hero-actions a:hover {
+  color: #e7a08d !important;
+}
