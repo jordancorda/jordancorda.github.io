@@ -796,3 +796,15 @@ html {scroll-padding-top:78px}
     font-size: clamp(16px, 4vw, 19.5px);
   }
 }
+
+/* Prova HERO — ritratto più a destra, mantenendo il +34% su desktop.
+   Solo trasformazione visiva della foto: non cambia il suo box, la hero,
+   il blocco testo, la barra fissa, la sezione Press o il resto della pagina.
+   La traslazione a destra compensa l'ingrandimento: le bacchette restano
+   separate dal titolo invece di avanzare verso le lettere. */
+@media (min-width: 761px) {
+  .hero-photo {
+    transform-origin: right center;
+    transform: translateX(18vw) scale(1.34);
+  }
+}
