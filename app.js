@@ -88,6 +88,27 @@ if(location.hash){
  }
 }
 
+
+// La barra resta visibile e trasparente sopra la fotografia;
+// dalla sezione Awakenings compare il nome e il menu scivola a destra.
+(() => {
+ const head=document.querySelector('.site-head');
+ const hero=document.querySelector('.hero');
+ if(!head || !hero) return;
+ let scheduled=false;
+ function update(){
+  scheduled=false;
+  const heroBottom=hero.getBoundingClientRect().bottom;
+  const headHeight=head.getBoundingClientRect().height;
+  const pastHero=heroBottom <= headHeight;
+  head.classList.toggle('after-hero',pastHero);
+ }
+ function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(update);}}
+ window.addEventListener('scroll',schedule,{passive:true});
+ window.addEventListener('resize',schedule,{passive:true});
+ schedule();
+})();
+
 $('#it').addEventListener('click',()=>lang('it'));
 $('#en').addEventListener('click',()=>lang('en'));
 let start='it';try{if(localStorage.getItem('jc_epk_language')==='en')start='en'}catch(e){}
