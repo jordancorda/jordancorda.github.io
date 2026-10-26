@@ -1325,3 +1325,25 @@ html {scroll-padding-top:78px}
   #music .album-lead{margin-top:33px}
   #music.music-section::after {top:305px}
 }
+
+
+/* VIDEO — due proiezioni verticali ampie, senza titolo di sezione.
+   Override circoscritto a #video: non modifica le altre griglie. */
+#video.video-section {
+  padding-top:clamp(72px,8vw,112px);
+  padding-bottom:clamp(88px,9vw,132px);
+}
+#video .video-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:clamp(58px,7vw,100px);
+  width:min(100%,1180px);
+  margin-inline:auto;
+}
+#video .video-unit {width:100%;min-width:0}
+#video .video-box {width:100%;aspect-ratio:16/9}
+#video .channel-link {display:table;margin:clamp(32px,4vw,56px) auto 0}
+@media(max-width:760px) {
+  #video.video-section {padding-top:56px;padding-bottom:78px}
+  #video .video-grid {gap:clamp(38px,9vw,58px)}
+}
