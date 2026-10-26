@@ -1347,3 +1347,15 @@ html {scroll-padding-top:78px}
   #video.video-section {padding-top:56px;padding-bottom:78px}
   #video .video-grid {gap:clamp(38px,9vw,58px)}
 }
+
+
+/* 26 ottobre — frase Awakenings, titolo Press centrato e mobile.
+   Il solo centraggio mobile corregge la copertina allineata a sinistra. */
+#press .section-head {justify-content:center;text-align:center;}
+#press .section-head h2 {width:100%;text-align:center;}
+@media (max-width:760px) {
+  #music .album-artwork {justify-self:center;margin-inline:auto;}
+  #music .album-composition {justify-items:center;}
+  #music .album-story {justify-self:stretch;}
+  #music .album-visual-inner {margin-inline:auto;}
+}
