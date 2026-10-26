@@ -1359,3 +1359,24 @@ html {scroll-padding-top:78px}
   #music .album-story {justify-self:stretch;}
   #music .album-visual-inner {margin-inline:auto;}
 }
+
+
+/* 26 ottobre — Discography centrata; Bio e Contatti in un unico blocco.
+   Solo #records e .about-contact-section, senza alterare il resto del sito. */
+#records > .section-head {display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:13px}
+#records > .section-head h2 {width:100%;text-align:center}
+#records > .section-head .section-side {margin:0;text-align:center}
+.about-contact-section {padding-top:clamp(88px,8vw,118px);padding-bottom:clamp(90px,9vw,132px)}
+.about-contact-grid {display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(56px,7.5vw,112px);align-items:start}
+.about-contact-column {min-width:0;scroll-margin-top:calc(80px + 24px)}
+.about-contact-column .section-head {margin-bottom:clamp(28px,3vw,42px)}
+.about-contact-column .bio-content {max-width:none}
+.about-contact-column .bio-short {font-size:clamp(20px,2vw,26px)}
+.about-contact-column.contact-section {padding:0}
+.about-contact-column .email-link {display:inline-block;font-size:clamp(22px,2.2vw,33px);line-height:1.25;overflow-wrap:anywhere;letter-spacing:-.035em}
+.about-contact-column .socials {margin-top:30px}
+@media(max-width:850px) {
+  .about-contact-grid {grid-template-columns:minmax(0,1fr);gap:clamp(64px,10vw,95px)}
+  .about-contact-column .bio-content {max-width:790px}
+  .about-contact-column .email-link {font-size:clamp(25px,5vw,38px)}
+}
