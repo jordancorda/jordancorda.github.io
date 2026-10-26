@@ -966,3 +966,362 @@ html {scroll-padding-top:78px}
 }
 
 @media (min-width:761px) { .hero-photo {transform: translateX(18vw) translateY(58px) scale(1.34);} }
+
+
+/* AWAKENINGS — PROVA IMMERSIVA NURAGHE, 26 ottobre 2026.
+   Tutta la modifica di impaginazione è limitata a #music.
+   La fotografia utilizzata è SMA00013.jpg, originale fornito dall'artista.
+   Mantiene album cover flip, Spotify reale, navbar, Hero e altre sezioni. */
+#music.music-section {
+  display:block;
+  position:relative;
+  min-height:0;
+  height:auto;
+  padding:0 0 clamp(94px,10vw,145px);
+  margin:0;
+  border:0;
+  background:var(--bg);
+  overflow:clip;
+  scroll-margin-top:0;
+}
+#music .album-visual {
+  isolation:isolate;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:clamp(440px,43vw,570px);
+  padding:clamp(110px,12vw,158px) 0 clamp(142px,15vw,200px);
+  overflow:hidden;
+  background:var(--bg);
+}
+#music .album-visual::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background-image:url("assets/nuraghe-originale-sma00013.jpg");
+  background-size:cover;
+  background-position:center 46%;
+  filter:grayscale(1) brightness(.78) contrast(1.07);
+  transform:scale(1.025);
+}
+#music .album-visual::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(to bottom,
+      rgba(11,11,12,.45) 0%,
+      rgba(11,11,12,.42) 22%,
+      rgba(11,11,12,.58) 45%,
+      rgba(11,11,12,.75) 63%,
+      rgba(11,11,12,.92) 81%,
+      #0b0b0c 100%),
+    linear-gradient(to right,rgba(11,11,12,.22),transparent 30%,transparent 70%,rgba(11,11,12,.2));
+  pointer-events:none;
+}
+#music .album-visual-inner {
+  width:100%;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+#music .album-kicker {
+  margin:0 0 clamp(25px,3vw,42px);
+  color:var(--ice);
+  font-size:clamp(10px,.91vw,13px);
+  font-weight:450;
+  letter-spacing:clamp(.13em,.24vw,.26em);
+  line-height:1.75;
+  text-transform:uppercase;
+  text-shadow:0 2px 16px rgba(0,0,0,.55);
+}
+#music .album-title {
+  font-family:"Helvetica Neue","Avenir Next",Helvetica,Arial,sans-serif;
+  font-size:clamp(70px,11.4vw,158px);
+  font-weight:200;
+  line-height:1;
+  letter-spacing:.018em;
+  color:var(--coral);
+  text-shadow:0 3px 28px rgba(0,0,0,.42);
+  margin:0;
+  overflow-wrap:normal;
+}
+#music .album-content {
+  position:relative;
+  z-index:2;
+  margin-top:clamp(-112px,-7vw,-76px);
+}
+#music .album-composition {
+  display:grid;
+  grid-template-columns:minmax(270px,.92fr) minmax(0,1.08fr);
+  column-gap:clamp(50px,7vw,118px);
+  align-items:start;
+  width:100%;
+}
+#music .album-artwork {
+  width:100%;
+  max-width:480px;
+  min-width:0;
+  justify-self:start;
+  align-self:start;
+}
+#music .album-artwork .awakenings-art-flip {
+  box-shadow:0 22px 45px rgba(0,0,0,.25);
+}
+#music .album-story {
+  align-self:start;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding-top:clamp(36px,5.8vw,92px);
+  min-width:0;
+}
+#music .album-story-label {
+  color:var(--ice);
+  font-size:11px;
+  font-weight:450;
+  letter-spacing:.21em;
+  line-height:1.5;
+  margin:0 0 25px;
+}
+#music .album-story .album-copy {
+  margin:0;
+  max-width:26em;
+  color:#eeeae7;
+  font-size:clamp(21px,2.15vw,29px);
+  font-weight:300;
+  line-height:1.5;
+  letter-spacing:-.025em;
+}
+#music .album-story-minor {
+  max-width:34em;
+  color:#beb9b5;
+  font-size:14px;
+  line-height:1.75;
+  margin:22px 0 0;
+}
+#music .album-listen {
+  margin-top:clamp(31px,4.2vw,54px);
+  max-width:560px;
+  width:100%;
+}
+#music .album-credits {
+  margin-top:22px!important;
+}
+@media(max-width:1000px){
+  #music .album-composition{grid-template-columns:minmax(235px,.9fr) minmax(0,1.1fr);column-gap:clamp(30px,4vw,55px)}
+  #music .album-story{padding-top:clamp(15px,3vw,43px)}
+  #music .album-story .album-copy{font-size:clamp(20px,2.4vw,24px)}
+}
+@media(max-width:760px){
+  #music.music-section {padding-bottom:95px}
+  #music .album-visual{min-height:360px;padding:112px 0 132px}
+  #music .album-visual::before{background-position:center center}
+  #music .album-visual::after{background:linear-gradient(to bottom,rgba(11,11,12,.44) 0%,rgba(11,11,12,.49) 35%,rgba(11,11,12,.78) 65%,#0b0b0c 100%)}
+  #music .album-kicker{font-size:10px;letter-spacing:.13em;margin-bottom:24px}
+  #music .album-title{font-size:clamp(46px,11.0vw,79px);letter-spacing:0;white-space:nowrap}
+  #music .album-content{margin-top:-50px}
+  #music .album-composition{grid-template-columns:1fr;row-gap:34px}
+  #music .album-artwork{width:min(100%,430px);max-width:none}
+  #music .album-story{padding-top:8px}
+  #music .album-story .album-copy{font-size:clamp(20px,5vw,25px)}
+  #music .album-listen{margin-top:27px}
+}
+@media(max-width:390px){
+  #music .album-title{font-size:clamp(41px,10.5vw,48px)}
+  #music .album-kicker{letter-spacing:.085em;font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+  #music .album-visual::before{transform:none}
+}
+
+
+/* AWAKENINGS — FOTO DI SFONDO CONTINUA (prova 2).
+   Il nuraghe è un unico sfondo dell'intera sezione, NON un riquadro
+   separato: compare gradualmente dal nero dopo la hero e si dissolve
+   nel nero dietro album, testo e player. Modifica confinata a #music. */
+#music.music-section {
+  isolation:isolate;
+  background:var(--bg);
+  position:relative;
+  overflow:hidden;
+  border-bottom:0;
+}
+#music.music-section::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:clamp(960px,76vw,1200px);
+  z-index:0;
+  pointer-events:none;
+  background-image:url("assets/nuraghe-originale-sma00013.jpg");
+  background-repeat:no-repeat;
+  background-position:center top;
+  background-size:cover;
+  filter:grayscale(1) brightness(.72) contrast(1.09);
+  opacity:.91;
+  -webkit-mask-image:linear-gradient(to bottom,
+    transparent 0%,
+    rgba(0,0,0,.035) 9%,
+    rgba(0,0,0,.35) 20%,
+    rgba(0,0,0,.85) 34%,
+    #000 42%,
+    #000 52%,
+    rgba(0,0,0,.62) 70%,
+    rgba(0,0,0,.24) 82%,
+    transparent 100%);
+  mask-image:linear-gradient(to bottom,
+    transparent 0%,
+    rgba(0,0,0,.035) 9%,
+    rgba(0,0,0,.35) 20%,
+    rgba(0,0,0,.85) 34%,
+    #000 42%,
+    #000 52%,
+    rgba(0,0,0,.62) 70%,
+    rgba(0,0,0,.24) 82%,
+    transparent 100%);
+}
+#music .album-visual {
+  z-index:1;
+  isolation:auto;
+  background:transparent;
+  overflow:visible;
+  min-height:0;
+  padding:clamp(152px,11.8vw,184px) 0 clamp(165px,13vw,205px);
+}
+#music .album-visual::before,
+#music .album-visual::after {content:none;display:none}
+#music .album-visual-inner {max-width:1320px;position:relative;z-index:1}
+#music .album-kicker {margin-bottom:clamp(20px,2.2vw,30px)}
+#music .album-title {
+  font-size:clamp(65px,10.1vw,146px);
+  letter-spacing:.012em;
+  line-height:1.06;
+}
+#music .album-lead {
+  max-width:850px;
+  margin:clamp(22px,2.7vw,36px) auto 0;
+  color:#eeeae6;
+  font-size:clamp(24px,2.7vw,37px);
+  letter-spacing:-.035em;
+  line-height:1.32;
+  font-weight:300;
+  text-shadow:0 4px 26px rgba(0,0,0,.55);
+  text-wrap:balance;
+}
+#music .album-content {z-index:2;margin-top:clamp(-83px,-5vw,-57px)}
+#music .album-story .album-copy {text-shadow:0 1px 14px rgba(0,0,0,.22)}
+@media (max-width:760px) {
+  #music.music-section::before {
+    height:850px;
+    background-position:center top;
+    filter:grayscale(1) brightness(.58) contrast(1.08);
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.52) 20%,#000 39%,rgba(0,0,0,.76) 55%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.52) 20%,#000 39%,rgba(0,0,0,.76) 55%,transparent 100%);
+  }
+  #music .album-visual {padding:110px 0 112px;min-height:0}
+  #music .album-kicker {margin-bottom:22px}
+  #music .album-title {font-size:clamp(45px,10.7vw,77px);letter-spacing:0}
+  #music .album-lead {font-size:clamp(21px,5.1vw,29px);line-height:1.37;max-width:580px;margin-top:28px}
+  #music .album-content {margin-top:-42px}
+}
+@media(max-width:390px){
+  #music .album-title {font-size:clamp(40px,10.4vw,49px)}
+}
+
+/* Dissolvenza di profondità sullo sfondo: preserva il paesaggio dietro
+   al titolo ma riduce gradualmente il contrasto dietro il racconto e Spotify. */
+#music.music-section::after {
+  content:"";
+  position:absolute;
+  top:500px;
+  left:0;
+  right:0;
+  height:570px;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(to bottom,
+    transparent 0%,
+    rgba(11,11,12,.10) 18%,
+    rgba(11,11,12,.42) 42%,
+    rgba(11,11,12,.80) 76%,
+    var(--bg) 100%);
+}
+#music .album-visual {z-index:2}
+@media(max-width:760px){
+  #music.music-section::after {top:350px;height:480px}
+}
+
+/* PROVA — nuraghe più in basso, fotografia ANCORA dietro al titolo.
+   A differenza del layout con due fasce, titolo e paesaggio appartengono
+   alla stessa sezione. Non spostiamo il titolo o gli altri contenuti. */
+@media (min-width:761px) {
+  #music.music-section::before {
+    top: 255px;
+    height: clamp(1010px, 80vw, 1250px);
+    background-position: center top;
+    background-size: cover;
+    -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(0,0,0,.22) 5%,
+      rgba(0,0,0,.62) 15%,
+      #000 30%,
+      #000 49%,
+      rgba(0,0,0,.65) 68%,
+      rgba(0,0,0,.22) 82%,
+      transparent 100%);
+    mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(0,0,0,.22) 5%,
+      rgba(0,0,0,.62) 15%,
+      #000 30%,
+      #000 49%,
+      rgba(0,0,0,.65) 68%,
+      rgba(0,0,0,.22) 82%,
+      transparent 100%);
+  }
+}
+@media (max-width:760px) {
+  #music.music-section::before {
+    top: 115px;
+    height: 850px;
+    background-position:center top;
+    -webkit-mask-image:linear-gradient(to bottom, transparent 0%,rgba(0,0,0,.48) 10%,#000 30%,rgba(0,0,0,.75) 55%,transparent 100%);
+    mask-image:linear-gradient(to bottom, transparent 0%,rgba(0,0,0,.48) 10%,#000 30%,rgba(0,0,0,.75) 55%,transparent 100%);
+  }
+}
+
+
+/* AWAKENINGS — allineamento coerente con screenshot di riferimento.
+   Le voci A.MA RECORDS e AWAKENINGS mantengono un ritmo ravvicinato;
+   solo l'immagine (non il titolo) risale nel fondale per collocare il
+   nuraghe dietro la frase A journey. La maschera resta graduale. */
+#music .album-kicker {margin-bottom:clamp(14px,1.8vw,22px)}
+#music .album-lead {margin-top:clamp(38px,3.5vw,50px)}
+@media (min-width:761px) {
+  #music.music-section::before {
+    top:110px;
+    height:clamp(1010px,80vw,1250px);
+    background-position:center top;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.16) 5%,rgba(0,0,0,.48) 14%,#000 28%,#000 49%,rgba(0,0,0,.65) 68%,rgba(0,0,0,.22) 82%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.16) 5%,rgba(0,0,0,.48) 14%,#000 28%,#000 49%,rgba(0,0,0,.65) 68%,rgba(0,0,0,.22) 82%,transparent 100%);
+  }
+  #music.music-section::after {top:440px}
+}
+@media (max-width:760px) {
+  #music.music-section::before {
+    top:58px;
+    height:850px;
+    background-position:center top;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.35) 10%,#000 29%,rgba(0,0,0,.75) 55%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.35) 10%,#000 29%,rgba(0,0,0,.75) 55%,transparent 100%);
+  }
+  #music .album-kicker{margin-bottom:15px}
+  #music .album-lead{margin-top:33px}
+  #music.music-section::after {top:305px}
+}
