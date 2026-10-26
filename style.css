@@ -890,3 +890,79 @@ html {scroll-padding-top:78px}
     );
   }
 }
+
+
+/* PROVA NAV: sulla foto il menu resta a sinistra e il lato destro
+   della barra è trasparente, lasciando vedere il ritratto.
+   Dopo la hero il nome appare e il menu si sposta dolcemente a destra.
+   Non modifica geometria, foto o sfumatura della hero. */
+@media (min-width: 761px) {
+  .site-head {
+    background:linear-gradient(to right,
+       rgba(11,11,12,.94) 0%,
+       rgba(11,11,12,.82) 30%,
+       rgba(11,11,12,.26) 55%,
+       transparent 69%);
+    transition:background-color .35s ease;
+  }
+  .site-head.after-hero { background:var(--bg); }
+  .site-head .head-inner {
+    position:relative;
+    justify-content:flex-start;
+  }
+  /* Questo spazio flessibile spinge il menu sulla destra solo dopo la hero. */
+  .site-head .head-inner::before {
+    content:"";
+    flex:0 1 0%;
+    min-width:0;
+    transition:flex-grow .68s cubic-bezier(.22,1,.36,1);
+  }
+  .site-head.after-hero .head-inner::before { flex-grow:1; }
+  .site-head .wordmark {
+    position:absolute;
+    left:clamp(22px,5.4vw,82px);
+    top:50%;
+    transform:translateY(-50%);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .48s ease,visibility .48s ease;
+  }
+  .site-head.after-hero .wordmark {
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .site-head .nav {margin-left:0;}
+  .site-head .lang {margin-left:12px;}
+}
+@media (max-width:760px) {
+  /* Lascia intatta la disposizione mobile e la sua barra leggibile. */
+  .site-head .wordmark {opacity:1; visibility:visible;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .site-head .head-inner::before,.site-head .wordmark {transition:none;}
+}
+
+
+/* HOME: fotografia dietro la zona trasparente del menu, senza tagliare la testa.
+   Il margine negativo recupera esattamente i 78px della barra: la hero risale
+   dietro la barra, senza accorciare la foto né alterare l'ancoraggio Awakenings.
+   Nome e ascolto sono tenuti sulle loro coordinate di prima. */
+@media (min-width: 761px) {
+  .site-head {
+    margin-bottom: -78px;
+    background: linear-gradient(to right,
+       rgba(11,11,12,.97) 0%,
+       rgba(11,11,12,.88) 29%,
+       rgba(11,11,12,.25) 49%,
+       rgba(11,11,12,0) 64%);
+  }
+  .site-head.after-hero { background: var(--bg); }
+  .hero {
+    height: calc(clamp(630px, calc(100svh - 78px), 820px) + 166px);
+  }
+  .hero-inner { padding-top: 78px; }
+}
+
+@media (min-width:761px) { .hero-photo {transform: translateX(18vw) translateY(58px) scale(1.34);} }
