@@ -1380,3 +1380,37 @@ html {scroll-padding-top:78px}
   .about-contact-column .bio-content {max-width:790px}
   .about-contact-column .email-link {font-size:clamp(25px,5vw,38px)}
 }
+
+
+/* CORREZIONE SFONDO AWAKENINGS — 27 ottobre 2026.
+   Il precedente ::after iniziava a top:440px (305px su mobile):
+   quello creava una fascia orizzontale visibile. Ora la velatura
+   comincia dall'inizio della sezione e cresce molto gradualmente.
+   Un solo fondale continuo, con la foto originale e dissolvenza
+   verso il nero prima del resto della pagina. */
+#music.music-section::after {
+  top:0;
+  bottom:auto;
+  height:clamp(1010px,80vw,1250px);
+  background:linear-gradient(to bottom,
+    rgba(11,11,12,0) 0%,
+    rgba(11,11,12,0) 24%,
+    rgba(11,11,12,.06) 34%,
+    rgba(11,11,12,.20) 47%,
+    rgba(11,11,12,.46) 61%,
+    rgba(11,11,12,.77) 77%,
+    #0b0b0c 100%);
+}
+@media (max-width:760px) {
+  #music.music-section::after {
+    top:0;
+    height:850px;
+    background:linear-gradient(to bottom,
+      rgba(11,11,12,0) 0%,
+      rgba(11,11,12,0) 17%,
+      rgba(11,11,12,.06) 30%,
+      rgba(11,11,12,.25) 48%,
+      rgba(11,11,12,.63) 73%,
+      #0b0b0c 100%);
+  }
+}
