@@ -1003,7 +1003,7 @@ html {scroll-padding-top:78px}
   background-image:url("assets/nuraghe-originale-sma00013.jpg");
   background-size:cover;
   background-position:center 46%;
-  filter:brightness(.78) contrast(1.07);
+  filter:grayscale(1) brightness(.78) contrast(1.07);
   transform:scale(1.025);
 }
 #music .album-visual::after {
@@ -1163,7 +1163,7 @@ html {scroll-padding-top:78px}
   background-repeat:no-repeat;
   background-position:center top;
   background-size:cover;
-  filter:brightness(.72) contrast(1.09);
+  filter:grayscale(1) brightness(.72) contrast(1.09);
   opacity:.91;
   -webkit-mask-image:linear-gradient(to bottom,
     transparent 0%,
@@ -1220,7 +1220,7 @@ html {scroll-padding-top:78px}
   #music.music-section::before {
     height:850px;
     background-position:center top;
-    filter:brightness(.58) contrast(1.08);
+    filter:grayscale(1) brightness(.58) contrast(1.08);
     -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.52) 20%,#000 39%,rgba(0,0,0,.76) 55%,transparent 100%);
     mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.52) 20%,#000 39%,rgba(0,0,0,.76) 55%,transparent 100%);
   }
@@ -1415,5 +1415,9 @@ html {scroll-padding-top:78px}
   }
 }
 
-/* AWAKENINGS — rimozione della fotografia di sfondo, resto invariato. */
-#music.music-section::before { background-image:none !important; }
+/* AWAKENINGS: rimozione definitiva immagine nuraghe, desktop e mobile */
+#music.music-section::before,
+#music .album-visual::before {
+  background-image: none !important;
+  display: none !important;
+}
