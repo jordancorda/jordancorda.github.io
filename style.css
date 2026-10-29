@@ -1421,3 +1421,13 @@ html {scroll-padding-top:78px}
   background-image: none !important;
   display: none !important;
 }
+
+/* 29 ottobre — Press subito dopo Awakenings, titolo allineato a sinistra. */
+#music.music-section { padding-bottom: 22px; }
+#press.press-section { padding-top: 20px; }
+#press .section-head { justify-content:flex-start; text-align:left; }
+#press .section-head h2 { width:auto; text-align:left; }
+@media (max-width:760px) {
+  #music.music-section { padding-bottom: 20px; }
+  #press.press-section { padding-top: 20px; }
+}
