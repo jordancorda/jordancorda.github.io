@@ -63,6 +63,16 @@
   .awakenings-art-flip__inner {transition:none;will-change:auto}
 }
 </style>
+<style id="awakenings-download-materials">
+#epk-downloads {margin-top:8px;margin-bottom:34px;padding-top:34px;padding-bottom:24px;border-top:1px solid #333335;}
+#epk-downloads .epk-heading {display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:26px;}
+#epk-downloads h2 {font-size:clamp(22px,2.5vw,34px);font-weight:300;margin:0;letter-spacing:-.035em;}
+#epk-downloads .epk-context {font-size:11px;letter-spacing:.15em;color:#9a9998;text-transform:uppercase;}
+#epk-downloads .epk-links {display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;}
+#epk-downloads .epk-links a {display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:10px 0;color:#d6d5d4;font-size:13px;text-decoration:none;border-bottom:1px solid #59595b;transition:border-color .2s,color .2s;}
+#epk-downloads .epk-links a:hover,#epk-downloads .epk-links a:focus-visible {color:#e7a08d;border-color:#e7a08d;}
+@media(max-width:760px){#epk-downloads{margin-top:2px;padding-top:28px;margin-bottom:18px}#epk-downloads .epk-heading{flex-direction:column;gap:8px;margin-bottom:14px}#epk-downloads .epk-links{column-gap:22px;row-gap:6px}#epk-downloads .epk-links a{font-size:12px;min-height:40px}}
+</style>
 </head>
 <body>
 <a class="skip" href="#music">Vai al contenuto</a>
@@ -175,10 +185,11 @@
    </section>
   </div>
  </section>
- <section class="shell" id="awakenings-press-kit" aria-label="Awakenings Press Kit" style="padding:24px 0 52px">
-  <div style="display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center">
-   <a class="underlink" href="press/awakenings-press-kit-it.zip" download>Scarica Press Kit — Italiano</a>
-   <a class="underlink" href="press/awakenings-press-kit-en.zip" download>Download Press Kit — English</a>
+ <section id="epk-downloads" class="shell" aria-labelledby="epk-download-title">
+  <div class="epk-heading"><h2 id="epk-download-title">Awakenings · Press kit</h2><span class="epk-context">Booking &amp; press materials</span></div>
+  <div class="epk-links">
+   <a href="press/awakenings-press-kit-it.zip" download>Scarica Press Kit — Italiano</a>
+   <a href="press/awakenings-press-kit-en.zip" download>Download Press Kit — English</a>
   </div>
  </section>
 </main>
