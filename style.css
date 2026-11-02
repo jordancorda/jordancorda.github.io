@@ -1691,3 +1691,8 @@ html,body{max-width:100%;overflow-x:clip;}
    justify-content:flex-start !important;
  }
 }
+
+/* Approved 2026-11-02: Awakenings copy aligned with album cover */
+@media (min-width:761px) {
+  #music .album-story {padding-top:0 !important;}
+}
