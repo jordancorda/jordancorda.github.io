@@ -1531,15 +1531,15 @@ h1{color:var(--coral)}
 
 /* Geometria del testo e delle sezioni invariata. Solo ritratto scontornato. */
 @media (min-width:1300px) {
- .hero-photo {transform:translate(260px,280px) scale(1.7) !important;transform-origin:right bottom;}
+ .hero-photo {transform:translate(360px,280px) scale(1.7) !important;transform-origin:right bottom;}
  .site-head:not(.after-hero) {background:transparent;}
 }
 @media (min-width:1100px) and (max-width:1299px) {
- .hero-photo {transform:translate(235px,36px) scale(1.52) !important;transform-origin:right bottom;}
+ .hero-photo {transform:translate(335px,36px) scale(1.52) !important;transform-origin:right bottom;}
  .site-head:not(.after-hero) {background:transparent;}
 }
 @media (min-width:1001px) and (max-width:1099px) {
- .hero-photo {transform:translate(235px,195px) scale(1.52) !important;transform-origin:right bottom;}
+ .hero-photo {transform:translate(335px,195px) scale(1.52) !important;transform-origin:right bottom;}
 }
 
 
