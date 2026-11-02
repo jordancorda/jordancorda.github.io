@@ -1432,8 +1432,8 @@ html {scroll-padding-top:78px}
   #press.press-section { padding-top: 20px; }
 }
 
-/* Responsive stability — approved 2 November 2026.
-   Only intermediate tablet widths. Original mobile and wide desktop rules remain. */
+
+/* CSS della versione responsive approvata sul sito: mantenimento delle proporzioni */
 @media (min-width:761px) and (max-width:1000px) {
   .hero-content {
     transform:translateX(calc(-14px - clamp(32px,3.4vw,53px)))
@@ -1457,7 +1457,114 @@ html {scroll-padding-top:78px}
   #music .album-story {padding-top:8px;}
   #music .album-story .album-copy {max-width:30em;}
 }
-/* Approved 17% uniform desktop enlargement, same as reviewed HTML preview. */
-@media (min-width:1100px) {
-  body {zoom:1.17;}
+@media (min-width:1100px) {body {zoom:1.17;}}
+
+
+:root{
+  --bg:#f3efe8;
+  --ink:#131313;
+  --muted:#5f5a56;
+  --coral:#d6452e;
+  --ice:#131313;
+  --rule:#d7d0c8;
+  color-scheme:light;
+}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink)}
+:focus-visible{outline-color:var(--coral)}
+.site-head{background:var(--bg)}
+.nav a{color:#2b2a28}
+.lang{color:#9a938a}
+.lang button{color:#8f877e}
+.wordmark{color:#111}
+.hero{background:var(--bg)}
+.hero-photo{
+  width:59%;
+  object-fit:contain;
+  object-position:right top;
+  filter:none;
+  -webkit-mask-image:none;
+  mask-image:none;
+  right:clamp(0px,1.2vw,18px);
+  top:clamp(-72px,-5vh,-26px);
+  height:calc(100% + 112px);
+}
+.hero::after,.hero::before{display:none!important}
+h1{color:var(--coral)}
+.role{color:#2a2a2a}
+.hero-actions a,.hero-actions a:visited{color:#1c1c1c;border-bottom-color:rgba(28,28,28,.45)}
+.hero-actions a:hover,.hero-actions a:focus-visible{color:var(--coral);border-bottom-color:var(--coral)}
+.content-section{border-bottom-color:rgba(19,19,19,.1)}
+.section-side,.press-source,.release,.bio-long,.lineup span,.record p,.socials a,.channel-link,.email-link,.press-notes a{color:#5c5854}
+.underlink,.music-information>.underlink{color:#1a1a1a;border-bottom-color:rgba(26,26,26,.35)}
+.spotify-shell,.spotify-frame,.spotify-shell iframe,.video-box,.video-display,.record-cover{background:#e8e2da}
+#music.music-section{background:#f6f1ea}
+#press.press-section{background:#fffdfa}
+#video.video-section{background:#f3efe8}
+#records.content-section{background:#fffdfa}
+.about-contact-section{background:#f0ebe4}
+#epk-downloads{border-top-color:rgba(19,19,19,.1)!important}
+#epk-downloads .epk-context{color:#665f58!important}
+#epk-downloads .epk-links a{color:#111!important;border-bottom-color:rgba(17,17,17,.35)!important}
+#epk-downloads .epk-links a:hover{color:var(--coral)!important;border-bottom-color:var(--coral)!important}
+@media(max-width:760px){
+  .hero{background:var(--bg)}
+  .hero-photo{
+    width:100%;
+    height:74%;
+    top:24px;
+    right:0;
+    object-position:center top;
+  }
+  .hero-inner{align-items:flex-end}
+}
+
+/* Adattamento smartphone: titolo e ritratto non si sovrappongono. */
+@media (max-width:760px){
+ .hero-inner {align-items:flex-start; padding-top:38px;}
+ .hero-content {padding-bottom:0;}
+ .hero .hero-actions {margin-top:38px;}
+ .hero-photo {width:88%; height:69%; top:auto; bottom:0; right:0; object-fit:contain; object-position:right bottom; transform:none !important;}
+}
+@media (min-width:761px){.hero-photo {transform:none !important;}}
+
+
+/* Geometria del testo e delle sezioni invariata. Solo ritratto scontornato. */
+@media (min-width:1300px) {
+ .hero-photo {transform:translate(260px,280px) scale(1.7) !important;transform-origin:right bottom;}
+ .site-head:not(.after-hero) {background:transparent;}
+}
+@media (min-width:1100px) and (max-width:1299px) {
+ .hero-photo {transform:translate(235px,36px) scale(1.52) !important;transform-origin:right bottom;}
+ .site-head:not(.after-hero) {background:transparent;}
+}
+@media (min-width:1001px) and (max-width:1099px) {
+ .hero-photo {transform:translate(235px,195px) scale(1.52) !important;transform-origin:right bottom;}
+}
+
+
+/* Ritratto grande e deliberatamente tagliato, come nell'anteprima precedente.
+   Solo gruppo testuale riposizionato nella fascia sinistra. */
+@media (min-width:1300px) {
+  .hero-content { transform:translate(42px,76px) !important; }
+}
+@media (min-width:1001px) and (max-width:1299px) {
+  .hero-content { transform:translate(20px,52px) !important; }
+}
+
+
+/* Only title color. Geometry and all other colors remain unchanged. */
+.hero h1 {color:#242b31!important;}
+/* The image keeps its existing scale; responsive adjustments remain in place. */
+
+
+/* SOLO posizione del gruppo testuale e distanza dal link.
+   Nessuna modifica alla foto, alle dimensioni del testo o allo zoom. */
+@media (min-width:1300px) {
+  .hero-content {transform:translate(42px,-42px) !important;}
+  .hero .hero-actions {margin-top:74px !important;}
+}
+@media (min-width:1001px) and (max-width:1299px) {
+  .hero-content {transform:translate(20px,-40px) !important;}
+  .hero .hero-actions {margin-top:72px !important;}
 }
