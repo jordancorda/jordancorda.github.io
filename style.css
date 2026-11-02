@@ -1623,3 +1623,8 @@ html, body, .site-head, .hero {background:#fffdfa !important;}
 @media (min-width:1001px) {
   .hero-photo {right:-36px !important;}
 }
+
+/* Fix approved horizontal overflow and portrait placement 2026-11-02 */
+html,body{max-width:100%;overflow-x:clip;}
+@supports not (overflow:clip){html,body{overflow-x:hidden;}}
+@media(min-width:1001px){.hero-photo{right:-80px !important;}}
