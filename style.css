@@ -1568,3 +1568,53 @@ h1{color:var(--coral)}
   .hero-content {transform:translate(20px,-40px) !important;}
   .hero .hero-actions {margin-top:72px !important;}
 }
+
+/* Approved 2026-11-02 — two alternate ivory backgrounds */
+html, body, .site-head, .hero {background:#fffdfa !important;}
+#music.music-section, #music .album-visual {background:#f2efe9 !important;}
+#music.music-section::after, #music .album-visual::after {display:none !important;}
+#press.press-section,#video.video-section,#records.content-section,.about-contact-section,#epk-downloads {
+ background:transparent !important;position:relative;isolation:isolate;
+}
+#press.press-section::before,#video.video-section::before,#records.content-section::before,.about-contact-section::before,#epk-downloads::before {
+ content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);z-index:-1;pointer-events:none;
+}
+#press.press-section::before{background:#fffdfa;}
+#video.video-section::before{background:#f2efe9;}
+#records.content-section::before{background:#fffdfa;}
+.about-contact-section::before{background:#f2efe9;}
+#epk-downloads::before{background:#fffdfa;}
+#music.music-section,#press.press-section,#video.video-section,#records.content-section,.about-contact-section{border-bottom:0 !important;}
+
+/* Approved thinner Awakenings heading */
+#music .album-title {font-weight:100 !important;}
+
+/* Approved readable press review quotes */
+#press .press-feature .press-card blockquote,
+#press .press-feature .press-primary blockquote,
+#press .press-feature .press-secondary blockquote,
+#press .press-feature .press-tertiary blockquote,
+#press .press-feature .press-accent blockquote {color:#303438 !important;opacity:1 !important;}
+#press .press-feature .press-card figcaption,
+#press .press-feature .press-card figcaption a,
+#press .press-feature .press-card figcaption a span {color:#53575b !important;opacity:1 !important;}
+
+/* Approved press kit inside contact column */
+#contact #epk-downloads {
+ margin:34px 0 0 !important;padding:25px 0 0 !important;width:100%;max-width:100%;
+ background:none !important;border-top:1px solid #d6d0c9 !important;isolation:auto !important;
+}
+#contact #epk-downloads::before{display:none !important;content:none !important;}
+#contact #epk-downloads .epk-heading{display:block;margin-bottom:16px;}
+#contact #epk-downloads h2{font-size:clamp(20px,2vw,27px);font-weight:350;letter-spacing:-.035em;}
+#contact #epk-downloads .epk-context{display:block;margin-top:7px;font-size:10px;}
+#contact #epk-downloads .epk-links{display:flex;flex-direction:column;align-items:flex-start;gap:5px;}
+#contact #epk-downloads .epk-links a{min-height:36px;font-size:12px;}
+@media(max-width:760px){#contact #epk-downloads{margin-top:28px !important;padding-top:22px !important;}}
+
+/* Approved transparent navigation with portrait extending behind it */
+@media(min-width:761px){
+ .site-head:not(.after-hero){background:transparent !important;}
+ .hero{margin-top:-78px;}
+ .hero-inner{transform:translateY(78px);}
+}
