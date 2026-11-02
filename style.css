@@ -1431,3 +1431,33 @@ html {scroll-padding-top:78px}
   #music.music-section { padding-bottom: 20px; }
   #press.press-section { padding-top: 20px; }
 }
+
+/* Responsive stability — approved 2 November 2026.
+   Only intermediate tablet widths. Original mobile and wide desktop rules remain. */
+@media (min-width:761px) and (max-width:1000px) {
+  .hero-content {
+    transform:translateX(calc(-14px - clamp(32px,3.4vw,53px)))
+              translateY(clamp(0px,calc((1000px - 100vw) * 1.38),330px));
+  }
+  .hero h1 {font-size:50px;}
+  .hero .hero-actions {
+    margin-top:clamp(119px,calc(119px + (100vw - 761px) * .13),150px);
+  }
+  .hero-photo {
+    transform:translateX(18vw)
+      translateY(calc(58px + clamp(0px,calc((1000px - 100vw) * .38),91px)))
+      scale(1.34);
+  }
+  .press-tiles {grid-template-columns:1fr;gap:22px;}
+  .record-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (min-width:761px) and (max-width:860px) {
+  #music .album-composition {grid-template-columns:1fr;row-gap:34px;}
+  #music .album-artwork {width:min(100%,430px);max-width:430px;}
+  #music .album-story {padding-top:8px;}
+  #music .album-story .album-copy {max-width:30em;}
+}
+/* Approved 17% uniform desktop enlargement, same as reviewed HTML preview. */
+@media (min-width:1100px) {
+  body {zoom:1.17;}
+}
