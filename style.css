@@ -1616,5 +1616,5 @@ html, body, .site-head, .hero {background:#fffdfa !important;}
 @media(min-width:761px){
  .site-head:not(.after-hero){background:transparent !important;}
  .hero{margin-top:-78px;}
- .hero-inner{transform:translateY(78px);}
+ .hero-inner{transform:translateY(24px);}
 }
