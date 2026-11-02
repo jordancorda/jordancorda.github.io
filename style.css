@@ -1618,3 +1618,8 @@ html, body, .site-head, .hero {background:#fffdfa !important;}
  .hero{margin-top:-78px;}
  .hero-inner{transform:translateY(8px);}
 }
+
+/* Fix cutout right edge 2026-11-02: preserve scale, vertical placement and typography. */
+@media (min-width:1001px) {
+  .hero-photo {right:-36px !important;}
+}
