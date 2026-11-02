@@ -71,7 +71,9 @@ function scrollToSection(target, behavior='smooth'){
    return;
   }
  }
- const top=Math.round(target.getBoundingClientRect().top+window.scrollY);
+ const head=document.querySelector('.site-head');
+ const headerHeight=head ? head.getBoundingClientRect().height : 0;
+ const top=Math.round(target.getBoundingClientRect().top+window.scrollY-headerHeight-22);
  window.scrollTo({top:Math.max(0,top),behavior});
 }
 
