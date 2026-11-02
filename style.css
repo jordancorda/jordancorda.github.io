@@ -1673,3 +1673,21 @@ html,body{max-width:100%;overflow-x:clip;}
 #epk-downloads .epk-links a:hover {color:#b9432f !important;}
 #contact #epk-downloads h2 {color:#1d6b86 !important;}
 #contact #epk-downloads .epk-links a {color:#b9432f !important; border-bottom-color:#b9432f !important;}
+
+/* Approved sticky navigation after hero — 2026-11-02 */
+@media (min-width:761px) {
+ .site-head.after-hero {
+   background:rgba(255,253,250,.87) !important;
+   -webkit-backdrop-filter:blur(14px);
+   backdrop-filter:blur(14px);
+ }
+ .site-head.after-hero .head-inner::before {
+   flex:1 1 auto !important;
+ }
+ .site-head.after-hero .nav {
+   left:0 !important;
+   margin-left:0 !important;
+   transform:none !important;
+   justify-content:flex-start !important;
+ }
+}
