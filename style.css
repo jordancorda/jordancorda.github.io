@@ -1890,3 +1890,19 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
     flex-basis:27px !important;
   }
 }
+
+/* 2026-11-03 near-transparent sticky navigation only */
+@media (min-width:761px) {
+ .site-head.after-hero {
+   background:rgba(255,253,250,.14) !important;
+   -webkit-backdrop-filter:blur(3px) !important;
+   backdrop-filter:blur(3px) !important;
+ }
+}
+@media (max-width:760px) {
+ .site-head.after-hero {
+   background:rgba(255,253,250,.14) !important;
+   -webkit-backdrop-filter:blur(3px) !important;
+   backdrop-filter:blur(3px) !important;
+ }
+}
