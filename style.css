@@ -1922,3 +1922,25 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
 .site-head.after-hero .nav a:focus-visible {
   color:#145b79 !important;
 }
+
+/* 2026-11-03 transparent navigation without white haze */
+/* Keep approved .14 background opacity exactly. Remove blur and white text glow. */
+.site-head.after-hero {
+  background:rgba(255,253,250,.14) !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+}
+.site-head.after-hero .nav a,
+.site-head.after-hero .lang button,
+.site-head.after-hero .wordmark {
+  color:#161b1f !important;
+  text-shadow:none !important;
+}
+@media(min-width:761px) {
+  .site-head.after-hero .nav a {font-size:13px !important;font-weight:600 !important;}
+  .site-head.after-hero .lang button {font-size:12px !important;font-weight:600 !important;}
+}
+@media(max-width:760px) {
+  .site-head.after-hero .nav a {font-weight:600 !important;}
+  .site-head.after-hero .lang button {font-weight:600 !important;}
+}
