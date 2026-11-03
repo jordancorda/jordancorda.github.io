@@ -1829,3 +1829,10 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
 @media (min-width:761px) {
   .hero .hero-content > .hero-scroll-cue {translate:-8px 142px !important;}
 }
+
+/* 2026-11-03 align homepage subtitle optical center with name and cue */
+/* Screenshot check: subtitle center is about 8px right of heading/cue.
+   Shift subtitle only horizontally; retain its existing +8px vertical placement. */
+@media (min-width:761px) {
+ .hero .hero-content > .role {translate:-8px 8px !important;}
+}
