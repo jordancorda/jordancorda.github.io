@@ -1867,3 +1867,26 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
  .hero .hero-content > .role {translate:0 5px !important;}
  .hero .hero-content > .hero-scroll-cue {translate:0 55px !important;}
 }
+
+/* 2026-11-03: smaller scroll label and animated line only */
+/* Keep existing horizontal centering, margins and vertical translate intact. */
+.hero .hero-content > .hero-scroll-cue {
+  font-size:9px !important;
+  letter-spacing:.12em !important;
+  gap:10px !important;
+}
+.hero .hero-content .hero-scroll-cue__track {
+  width:2px !important;
+  height:32px !important;
+  flex:0 0 32px !important;
+}
+@media (max-width:760px) {
+  .hero .hero-content > .hero-scroll-cue {
+    font-size:8px !important;
+    gap:9px !important;
+  }
+  .hero .hero-content .hero-scroll-cue__track {
+    height:27px !important;
+    flex-basis:27px !important;
+  }
+}
