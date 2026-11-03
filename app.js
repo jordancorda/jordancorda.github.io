@@ -46,6 +46,28 @@ records();press();
 // Spotify album preview is embedded directly and remains playable within the page.
 document.querySelectorAll('.video-box').forEach(box=>{
  const button=box.querySelector('button');
+ // Use a genuine automatic frame from the actual Awakenings video.
+ // Prefer YouTube's 1280x720 video still. If missing, fall back to its other
+ // timed stills, not the separate custom collage thumbnail.
+ if(button && box.dataset.video==='t7Ljt7eULN0' && box.closest('#music .featured-video-between-intro-and-album')){
+  const frames=['maxres1.jpg','sd1.jpg','hq1.jpg'];
+  const tryFrame=(index)=>{
+   if(index>=frames.length)return;
+   const url='https://i.ytimg.com/vi/t7Ljt7eULN0/'+frames[index];
+   const probe=new Image();
+   const minWidth=index===0?700:index===1?600:400;
+   probe.onload=()=>{
+    if(probe.naturalWidth>=minWidth){
+     button.style.setProperty('--video-thumb','url("'+url+'")');
+    }else{
+     tryFrame(index+1);
+    }
+   };
+   probe.onerror=()=>tryFrame(index+1);
+   probe.src=url;
+  };
+  tryFrame(0);
+ }
  button?.addEventListener('click',()=>{
   const iframe=document.createElement('iframe');
   iframe.title=box.dataset.video==='t7Ljt7eULN0'?'Awakenings — video':'Vibrafono solo — video';
