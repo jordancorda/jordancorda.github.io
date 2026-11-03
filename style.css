@@ -1766,3 +1766,14 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
 @media (prefers-reduced-motion:reduce) {
  .hero .hero-content .hero-scroll-cue__track::before {animation:none !important;top:0;}
 }
+
+/* Fix 2026-11-03: keep subtitle immediately below name; scroll cue far below both. */
+.hero .hero-content > h1 {order:1 !important;}
+.hero .hero-content > .role {order:2 !important;}
+.hero .hero-content > .hero-scroll-cue {order:3 !important;margin-top:158px !important;}
+@media (min-width:761px) and (max-width:1099px) {
+ .hero .hero-content > .hero-scroll-cue {margin-top:125px !important;}
+}
+@media (max-width:760px) {
+ .hero .hero-content > .hero-scroll-cue {margin-top:100px !important;}
+}
