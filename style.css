@@ -1795,3 +1795,12 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
     translate:0 55px !important;
   }
 }
+
+/* Hero subtitle only: slightly larger and lower — 2026-11-03 */
+/* Visual offset does not change the scroll cue's position in document flow. */
+@media (min-width:761px) {
+  .hero .hero-content > .role {font-size:15px !important;translate:0 8px !important;}
+}
+@media (max-width:760px) {
+  .hero .hero-content > .role {font-size:11px !important;translate:0 5px !important;}
+}
