@@ -1979,3 +1979,32 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
  .hero .hero-content > .hero-scroll-cue {font-size:7px !important;gap:7px !important;}
  .hero .hero-content .hero-scroll-cue__track {height:20px !important;flex-basis:20px !important;}
 }
+
+/* 2026-11-03 active Awakenings YouTube frame only */
+/* Only AFTER Play, fit the existing 16:9 box beneath navigation
+   with a bottom safety margin. No change to thumbnail, other videos,
+   home, navigation, or the YouTube video stream. */
+@supports selector(.video-box:has(iframe)) {
+ #music .featured-video-between-intro-and-album .video-box:has(> iframe) {
+  width:min(100%, calc(max(320px, 100dvh - 142px) * 16 / 9)) !important;
+  aspect-ratio:16 / 9 !important;
+  height:auto !important;
+  margin-inline:auto !important;
+  position:relative !important;
+  overflow:hidden !important;
+ }
+ #music .featured-video-between-intro-and-album .video-box:has(> iframe) > iframe {
+  display:block !important;
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  transform:none !important;
+ }
+}
