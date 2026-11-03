@@ -1823,3 +1823,9 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
     letter-spacing:.11em !important;
   }
 }
+
+/* 2026-11-03 exact cue optical alignment with homepage name */
+/* Optical correction based on Safari screenshot. Vertical translate unchanged. */
+@media (min-width:761px) {
+  .hero .hero-content > .hero-scroll-cue {translate:-8px 142px !important;}
+}
