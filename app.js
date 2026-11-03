@@ -54,16 +54,16 @@ document.querySelectorAll('.video-box').forEach(box=>{
   iframe.referrerPolicy='strict-origin-when-cross-origin';
   iframe.allowFullscreen=true;
   box.replaceChildren(iframe);
-  // Only the featured Awakenings video: align within viewport after Play.
+  // Approved video-only change: position the player beneath the sticky navigation.
   if(box.closest('#music .featured-video-between-intro-and-album')){
    requestAnimationFrame(()=>{
     const header=document.querySelector('.site-head');
     const headerHeight=header?header.getBoundingClientRect().height:0;
-    const rect=box.getBoundingClientRect();
-    const availableHeight=Math.max(0,window.innerHeight-headerHeight);
-    const inset=Math.max(0,(availableHeight-rect.height)/2);
-    const scrollTop=window.scrollY+rect.top-headerHeight-inset;
-    window.scrollTo({top:Math.max(0,scrollTop),behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    box.style.scrollMarginTop=`${Math.ceil(headerHeight)+12}px`;
+    box.scrollIntoView({
+     block:'start',
+     behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'
+    });
    });
   }
  });
