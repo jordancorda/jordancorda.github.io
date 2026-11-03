@@ -1777,3 +1777,21 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
 @media (max-width:760px) {
  .hero .hero-content > .hero-scroll-cue {margin-top:100px !important;}
 }
+
+/* Approved 2026-11-03: centered name and low scroll cue */
+/* Match approved preview: keep the title and subtitle stationary,
+   move only scroll cue lower. Portrait and all other elements unchanged. */
+@media (min-width:761px) {
+  .hero .hero-content {translate:0 0 !important;}
+  .hero .hero-content > .hero-scroll-cue {
+    margin-top:73px !important;
+    translate:0 142px !important;
+  }
+}
+@media (max-width:760px) {
+  .hero .hero-content {translate:0 0 !important;}
+  .hero .hero-content > .hero-scroll-cue {
+    margin-top:52px !important;
+    translate:0 55px !important;
+  }
+}
