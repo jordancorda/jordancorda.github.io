@@ -1906,3 +1906,19 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
    backdrop-filter:blur(3px) !important;
  }
 }
+
+/* Navbar readability over transparent background — text only 2026-11-03 */
+/* The approved navbar background and blur are left completely untouched.
+   Slight light halo behind lettering preserves contrast across varied sections. */
+.site-head.after-hero .nav a,
+.site-head.after-hero .lang button,
+.site-head.after-hero .wordmark {
+  color:#182b35 !important;
+  text-shadow:0 0 3px rgba(255,253,250,.98),0 0 8px rgba(255,253,250,.92),0 1px 2px rgba(255,253,250,.95) !important;
+}
+.site-head.after-hero .lang button[aria-pressed="true"],
+.site-head.after-hero .lang button.active,
+.site-head.after-hero .nav a:hover,
+.site-head.after-hero .nav a:focus-visible {
+  color:#145b79 !important;
+}
