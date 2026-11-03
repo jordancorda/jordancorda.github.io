@@ -2008,3 +2008,16 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
   transform:none !important;
  }
 }
+
+/* 2026-11-03 hero subtitle typography refinement only */
+/* Weight and tracking ONLY. Existing size, layout, position, translation and
+   vertical/horizontal centering are intentionally left unchanged. */
+.hero .hero-content > .role {
+ font-weight:500 !important;
+ letter-spacing:.145em !important;
+}
+@media (max-width:760px) {
+ .hero .hero-content > .role {
+  letter-spacing:.105em !important;
+ }
+}
