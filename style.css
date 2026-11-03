@@ -1836,3 +1836,34 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
 @media (min-width:761px) {
  .hero .hero-content > .role {translate:-8px 8px !important;}
 }
+
+/* 2026-11-03 exact shared axis for hero title subtitle and scroll */
+/* Remove the asymmetric title padding and accumulated horizontal nudges.
+   One flex-column center for all three elements; vertical coordinates unchanged. */
+.hero .hero-content {align-items:center !important;}
+.hero .hero-content > h1 {
+ padding-right:0 !important;
+ margin-left:0 !important;
+ margin-right:0 !important;
+ align-self:center !important;
+}
+.hero .hero-content > .role {
+ align-self:center !important;
+ margin-left:0 !important;
+ margin-right:0 !important;
+ text-align:center !important;
+}
+.hero .hero-content > .hero-scroll-cue {
+ align-self:center !important;
+ margin-left:auto !important;
+ margin-right:auto !important;
+ text-align:center !important;
+}
+@media (min-width:761px) {
+ .hero .hero-content > .role {translate:0 8px !important;}
+ .hero .hero-content > .hero-scroll-cue {translate:0 142px !important;}
+}
+@media (max-width:760px) {
+ .hero .hero-content > .role {translate:0 5px !important;}
+ .hero .hero-content > .hero-scroll-cue {translate:0 55px !important;}
+}
