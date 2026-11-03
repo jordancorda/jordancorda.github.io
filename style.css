@@ -1804,3 +1804,22 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
 @media (max-width:760px) {
   .hero .hero-content > .role {font-size:11px !important;translate:0 5px !important;}
 }
+
+/* Approved scroll cue size and horizontal centering only — 2026-11-03 */
+/* Same column center as heading and subtitle. Preserve all vertical offsets. */
+.hero .hero-content > .hero-scroll-cue {
+  align-self:center !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  left:auto !important;
+  right:auto !important;
+  font-size:11px !important;
+  letter-spacing:.125em !important;
+  text-align:center !important;
+}
+@media (max-width:760px) {
+  .hero .hero-content > .hero-scroll-cue {
+    font-size:9px !important;
+    letter-spacing:.11em !important;
+  }
+}
