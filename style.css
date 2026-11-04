@@ -1924,9 +1924,9 @@ html[lang="en"] .hero-scroll-cue__label--en {display:inline;}
 }
 
 /* 2026-11-03 transparent navigation without white haze */
-/* Slightly stronger 24% background opacity; keep blur disabled and text unchanged. */
+/* Slightly stronger 30% background opacity; keep blur disabled and text unchanged. */
 .site-head.after-hero {
-  background:rgba(255,253,250,.24) !important;
+  background:rgba(255,253,250,.30) !important;
   -webkit-backdrop-filter:none !important;
   backdrop-filter:none !important;
 }
