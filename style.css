@@ -2175,3 +2175,35 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
     right:-47% !important;
   }
 }
+
+
+/* Mobile-only hero typography placement: centered within the empty space
+   to the left of the portrait. No desktop styles or photo geometry changed. */
+@media (max-width:760px) {
+  .hero .hero-content {
+    top:clamp(205px,32svh,295px) !important;
+    left:3% !important;
+    width:42% !important;
+    max-width:42% !important;
+  }
+  .hero .hero-content > h1 {
+    font-size:clamp(29px,7.8vw,35px) !important;
+    line-height:1.09 !important;
+  }
+  .hero .hero-content > .role {
+    font-size:clamp(9px,2.45vw,11px) !important;
+    line-height:1.35 !important;
+    margin-top:14px !important;
+  }
+  .hero .hero-content > .hero-scroll-cue {
+    top:calc(100svh - clamp(205px,32svh,295px) - 90px) !important;
+  }
+}
+@media (max-width:355px) {
+  .hero .hero-content {
+    left:3% !important;
+    width:43% !important;
+    max-width:43% !important;
+  }
+  .hero .hero-content > h1 {font-size:clamp(27px,8.2vw,30px) !important;}
+}
