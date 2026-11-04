@@ -161,3 +161,23 @@ $('#en').addEventListener('click',()=>lang('en'));
 let start='it';try{if(localStorage.getItem('jc_epk_language')==='en')start='en'}catch(e){}
 lang(start);
 })();
+
+/* Approved mobile menu, only initialized for phones; Mac untouched. */
+(()=>{
+ const header=document.querySelector('.site-head');
+ const inner=header?.querySelector('.head-inner');
+ const nav=inner?.querySelector('.nav');
+ if(!header||!inner||!nav||!window.matchMedia('(max-width:760px)').matches)return;
+ const trigger=document.createElement('button');
+ trigger.type='button';trigger.className='mobile-menu-trigger';
+ trigger.setAttribute('aria-label','Apri menu di navigazione');
+ trigger.setAttribute('aria-expanded','false');
+ nav.id=nav.id||'jc-mobile-nav';trigger.setAttribute('aria-controls',nav.id);
+ trigger.innerHTML='<span class="bar" aria-hidden="true"></span><span class="bar" aria-hidden="true"></span><span class="bar" aria-hidden="true"></span>';
+ inner.insertBefore(trigger,nav);
+ const setOpen=open=>{header.classList.toggle('mobile-menu-open',open);trigger.setAttribute('aria-expanded',String(open));trigger.setAttribute('aria-label',open?'Chiudi menu di navigazione':'Apri menu di navigazione');};
+ trigger.addEventListener('click',()=>setOpen(!header.classList.contains('mobile-menu-open')));
+ nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setOpen(false)));
+ document.addEventListener('pointerdown',e=>{if(!header.contains(e.target))setOpen(false)});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
+})();
