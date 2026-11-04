@@ -116,9 +116,45 @@
   <div class="shell featured-video-between-intro-and-album">
    <article class="video-unit video-featured">
     <div class="video-box">
-     <video controls playsinline preload="metadata" aria-label="Awakenings — video" style="display:block;width:100%;height:100%;object-fit:contain;">
-      <source src="assets/Awakenings_teaser_1080p_web.mp4" type="video/mp4">
+     <video id="awakenings-local-video" controls playsinline preload="auto" poster="https://i.ytimg.com/vi/t7Ljt7eULN0/maxres1.jpg" aria-label="Awakenings — video" style="display:block;width:100%;height:100%;object-fit:contain;">
+      <source src="assets/Awakenings_teaser_1080p_web.mp4?v=20261104-02" type="video/mp4">
      </video>
+     <script>
+      (() => {
+       const player = document.getElementById('awakenings-local-video');
+       const source = player?.querySelector('source');
+       if (!player || !source) return;
+       let alternateTried = false;
+       let fallbackShown = false;
+       let timeout;
+       const showFallback = () => {
+        if (fallbackShown) return;
+        fallbackShown = true;
+        clearTimeout(timeout);
+        player.style.display = 'none';
+        const link = document.createElement('a');
+        link.href = 'https://raw.githubusercontent.com/jordancorda/jordancorda.github.io/main/assets/Awakenings_teaser_1080p_web.mp4';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'Apri il video Awakenings / Open Awakenings video';
+        link.style.cssText = 'position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:white;background:#151515;font:600 16px system-ui,sans-serif;';
+        player.parentElement.append(link);
+       };
+       const tryAlternate = () => {
+        if (player.readyState >= 1) return;
+        if (alternateTried) { showFallback(); return; }
+        alternateTried = true;
+        clearTimeout(timeout);
+        source.src = 'https://raw.githubusercontent.com/jordancorda/jordancorda.github.io/main/assets/Awakenings_teaser_1080p_web.mp4';
+        player.load();
+        timeout = setTimeout(() => { if (player.readyState < 1) showFallback(); }, 9000);
+       };
+       player.addEventListener('loadedmetadata', () => clearTimeout(timeout));
+       player.addEventListener('error', tryAlternate);
+       source.addEventListener('error', tryAlternate);
+       timeout = setTimeout(tryAlternate, 9000);
+      })();
+     </script>
     </div>
    </article>
   </div>
