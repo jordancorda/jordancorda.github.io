@@ -2207,3 +2207,33 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
   }
   .hero .hero-content > h1 {font-size:clamp(27px,8.2vw,30px) !important;}
 }
+
+
+/* 2026-11-04: ONLY mobile — fill Safari's dynamic viewport and split
+   the translated hero subtitle without its middle dot. Desktop untouched. */
+@media (max-width:760px) {
+  .hero {
+    height:100dvh !important;
+    min-height:100dvh !important;
+  }
+  .hero .hero-content > .hero-scroll-cue {
+    top:calc(100dvh - clamp(205px,32svh,295px) - 90px) !important;
+  }
+  .hero .hero-content > .role {
+    margin-top:clamp(27px,3.3svh,42px) !important;
+    font-size:0 !important;
+    line-height:1.3 !important;
+  }
+  .hero .hero-content > .role::before,
+  .hero .hero-content > .role::after {
+    display:block;
+    font-size:clamp(9px,2.45vw,11px);
+    font-weight:600;
+    line-height:1.35;
+    letter-spacing:.005em;
+  }
+  .hero .hero-content > .role::before {content:"VIBRAFONISTA JAZZ";}
+  .hero .hero-content > .role::after {content:"COMPOSITORE";}
+  html[lang="en"] .hero .hero-content > .role::before {content:"JAZZ VIBRAPHONIST";}
+  html[lang="en"] .hero .hero-content > .role::after {content:"COMPOSER";}
+}
