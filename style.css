@@ -2071,3 +2071,107 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
  #music .album-story-compact-buy .album-purchase-note {font-size:14px;margin-bottom:20px;}
  #music .album-story-compact-buy .album-purchase-link {min-height:48px;margin-bottom:24px;padding:12px 25px;font-size:14px;}
 }
+
+
+/* Mobile-only refinements — photo clearance and centered section content (2026-11-04).
+   Desktop/tablet widths above 760px remain unchanged. */
+@media (max-width:760px) {
+  /* Keep the portrait clear of the artist name and use the full hero height. */
+  .hero-photo {
+    top:-10% !important;
+    height:110% !important;
+    right:-39% !important;
+  }
+
+  /* Center typography and controls only in the sections after the hero. */
+  #music .album-visual-inner,
+  #music .album-kicker,
+  #music .album-title,
+  #music .album-lead,
+  #music .album-content,
+  #press,
+  #records,
+  .about-contact-section {
+    text-align:center !important;
+  }
+  #music .album-visual-inner,
+  #music .album-lead {
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  #music .album-composition,
+  #music .album-artwork {
+    justify-items:center !important;
+    justify-self:center !important;
+  }
+  #music .album-story-compact-buy {
+    width:100%;
+    align-items:center !important;
+    text-align:center !important;
+  }
+  #music .album-story-compact-buy .album-purchase-title,
+  #music .album-story-compact-buy .album-purchase-note {
+    text-align:center !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  #music .album-story-compact-buy .album-purchase-link {
+    align-self:center !important;
+    text-align:center !important;
+  }
+  #music .album-story-compact-buy .album-listen {
+    margin-inline:auto !important;
+  }
+  #music .album-credits,
+  #music .album-credits .lineup,
+  #music .album-credits .lineup p,
+  #music .album-credits summary {
+    text-align:center !important;
+  }
+  #music .album-credits summary,
+  .about-contact-section .bio-content details summary {
+    margin-inline:auto !important;
+  }
+  #press .section-head,
+  #records > .section-head,
+  .about-contact-column .section-head {
+    justify-content:center !important;
+    align-items:center !important;
+    text-align:center !important;
+  }
+  #press .press-feature,
+  #press .press-card,
+  #press .press-card blockquote,
+  #press .press-card figcaption,
+  #records .record,
+  #records .record h3,
+  #records .record p,
+  .about-contact-column,
+  .about-contact-column .bio-content,
+  .about-contact-column .bio-short,
+  .about-contact-column .bio-long {
+    text-align:center !important;
+  }
+  .about-contact-column .bio-content {
+    margin-inline:auto !important;
+  }
+  .about-contact-column .socials {
+    justify-content:center !important;
+  }
+  #contact #epk-downloads,
+  #contact #epk-downloads .epk-heading,
+  #contact #epk-downloads .epk-links {
+    text-align:center !important;
+  }
+  #contact #epk-downloads .epk-links {
+    align-items:center !important;
+  }
+  #video .channel-link {
+    text-align:center !important;
+  }
+}
+@media (max-width:355px) {
+  .hero-photo {
+    right:-47% !important;
+  }
+}
