@@ -2296,7 +2296,7 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
    The approved header colors, opacity, blur, size and typography are untouched. */
 @media (min-width:761px) {
  .site-head {
-  transition:transform .3s ease,opacity .3s ease;
+  transition:transform .25s ease,opacity .25s ease;
  }
  .site-head.after-hero.nav-auto-hidden:not(:focus-within) {
   transform:translateY(-105%);
@@ -2306,4 +2306,14 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
 }
 @media (min-width:761px) and (prefers-reduced-motion:reduce) {
  .site-head {transition:none;}
+}
+
+
+/* Approved desktop-only: align language switch with the navigation links. */
+@media (min-width:761px) {
+ .site-head .lang {
+  position:relative;
+  left:calc(-1 * clamp(22px,5.4vw,82px));
+  margin-left:0 !important;
+ }
 }
