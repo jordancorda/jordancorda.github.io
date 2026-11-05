@@ -2277,3 +2277,16 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
   background-position:68% center;
  }
 }
+
+
+/* Approved Press quote readability: heavier text only. */
+#press .press-card blockquote,
+#press .press-more blockquote {
+  font-weight:450 !important;
+}
+#press .press-card figcaption,
+#press .press-card figcaption a,
+#press .press-more figcaption,
+#press .press-more figcaption a {
+  font-weight:500;
+}
