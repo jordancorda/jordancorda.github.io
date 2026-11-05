@@ -19,7 +19,7 @@
 <link rel="canonical" href="https://jordancorda.com/">
 <link rel="icon" href="assets/awakenings-cover.jpg">
 <title>Jordan Corda — Jazz Vibraphonist & Composer | Awakenings</title>
-<link rel="stylesheet" href="style.css?v=cinematic-home-fixed-20261105-02">
+<link rel="stylesheet" href="style.css?v=cinematic-mobile-20261105-01">
 <script src="data.js" defer></script>
 <script src="app.js?v=iphone-menu-approved-20261104-01" defer></script>
 
@@ -96,6 +96,7 @@
    <source data-src="assets/Awakenings_teaser_1080p_web.mp4" type="video/mp4">
   </video>
   <div class="hero-cinema-veil" aria-hidden="true"></div>
+  <button type="button" id="hero-cinema-start" class="hero-cinema-start" hidden><span class="cinema-it">▶ AVVIA IL VIDEO</span><span class="cinema-en">▶ PLAY VIDEO</span></button>
   <img class="hero-photo" src="assets/jordan-scontornato-editoriale.png" alt="Jordan Corda con le bacchette da vibrafono" fetchpriority="high">
   <div class="shell hero-inner">
    <div class="hero-content">
@@ -270,20 +271,45 @@
 (() => {
  const player=document.getElementById('hero-cinema-video');
  const desktop=window.matchMedia('(min-width:761px)');
+ const mobile=window.matchMedia('(max-width:760px)');
+ const startButton=document.getElementById('hero-cinema-start');
  if(!player)return;
+ player.muted=true;
+ player.defaultMuted=true;
+ player.playsInline=true;
+ player.setAttribute('webkit-playsinline','');
+ let delayedButton;
+ const revealMobileControl=()=>{
+  if(mobile.matches&&startButton)startButton.hidden=false;
+ };
+ const hideMobileControl=()=>{if(startButton)startButton.hidden=true;};
  const activate=()=>{
-  if(!desktop.matches){player.pause();return;}
   const source=player.querySelector('source');
-  if(source&&!source.src&&source.dataset.src){
+  if(source&&!source.getAttribute('src')&&source.dataset.src){
    source.src=source.dataset.src;
    player.load();
   }
   player.muted=true;
   const pending=player.play();
-  if(pending&&typeof pending.catch==='function')pending.catch(()=>{});
+  if(pending&&typeof pending.then==='function'){
+   pending.then(hideMobileControl).catch(revealMobileControl);
+  }
+  if(mobile.matches){
+   clearTimeout(delayedButton);
+   delayedButton=setTimeout(()=>{if(player.paused)revealMobileControl();},1900);
+  } else {
+   hideMobileControl();
+  }
  };
+ player.addEventListener('playing',hideMobileControl);
+ player.addEventListener('error',revealMobileControl);
+ player.addEventListener('pause',()=>{if(!document.hidden)revealMobileControl();});
+ startButton?.addEventListener('click',activate);
  activate();
  desktop.addEventListener?.('change',activate);
+ document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden&&player.paused)activate();
+ });
 })();
 </script>
 </body>
