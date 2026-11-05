@@ -13,7 +13,7 @@ function records(){
 function press(){
  const uk=d.press.find(x=>x.name==='UK Vibe');
  const paris=d.press.find(x=>x.name==='Paris-Move');
- const others=d.press.filter(x=>!['UK Vibe','Paris-Move'].includes(x.name));
+ const others=d.press.filter(x=>!['UK Vibe','Paris-Move','Blue in Green Radio'].includes(x.name));
  const langCode=document.documentElement.lang==='en'?'en':'it';
  const allReviewsLabel=tr[langCode].allReviews;
  const allReviewsUrl='https://www.amaedizioni.it/artist?id=55';
@@ -31,8 +31,57 @@ function press(){
    <figure class="press-card press-accent"><blockquote lang="it">“${escapeHTML(quoteIndie)}”</blockquote><figcaption><a href="${escapeHTML(indieUrl)}" target="_blank" rel="noopener noreferrer">IndiePerCui</a></figcaption></figure>
   </div>
  </div>
+ </div><div class="press-more" aria-label="Altre quattro recensioni">
+ <figure class="press-card" tabindex="0"><blockquote lang="it">“Il passato, in Awakenings, non è un luogo in cui tornare. È una materia da attraversare.”</blockquote><figcaption><a href="https://www.jazzinfamily.com/jordan-corda-awakenings/" target="_blank" rel="noopener noreferrer">Jazz in Family <span>· Mario Ferraioli</span></a></figcaption></figure>
+ <figure class="press-card" tabindex="0"><blockquote lang="it">“Jordan Corda rivive gli episodi più importanti della sua vita in un concept album”</blockquote><figcaption><a href="https://www.jazzconvention.net/?id=1310&amp;option=com_content&amp;view=article" target="_blank" rel="noopener noreferrer">Jazz Convention <span>· Fabio Ciminiera</span></a></figcaption></figure>
+ <figure class="press-card" tabindex="0"><blockquote lang="it">“al panorama internazionale del contemporary jazz”</blockquote><figcaption><a href="https://www.online-jazz.net/2026/10/01/i-nostri-cd-le-autumn-leaves-di-amedeo-furfaro-prima-parte/" target="_blank" rel="noopener noreferrer">A Proposito di Jazz <span>· Amedeo Furfaro</span></a></figcaption></figure>
+ <figure class="press-card" tabindex="0"><blockquote lang="en">“Fresh writing and linear improvisation.”</blockquote><figcaption><a href="https://www.amaedizioni.it/review?id=541&amp;lang=en" target="_blank" rel="noopener noreferrer">Windout Magazine <span>· Giuseppe Maggioli</span></a></figcaption></figure>
  </div><div class="press-notes">${others.map(item=>`<a href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.name)}</a>`).join('')}<a href="${allReviewsUrl}" target="_blank" rel="noopener noreferrer">${allReviewsLabel}</a></div>`;
+ initPressMotion();
 }
+let stopPressMotion=null;
+function initPressMotion(){
+ if(stopPressMotion)stopPressMotion();
+ const cards=[...document.querySelectorAll('#press .press-card')];
+ const scene=document.querySelector('#press');
+ if(!scene||!cards.length)return;
+ cards.forEach(c=>{c.tabIndex=0;c.title='Clicca sulla frase per fermare o riprendere il movimento';});
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const mobile=window.matchMedia('(max-width: 760px)');
+ let targetX=0,targetY=0,smoothX=0,smoothY=0,phaseTime=0,lastTime=0,speed=1,pointerWeight=1,pinned=false,raf=0;
+ const hovered=new Set();
+ const offsets=[{ax:23,ay:30,phase:.1},{ax:29,ay:22,phase:2.1},{ax:24,ay:27,phase:4},{ax:26,ay:21,phase:1.3},{ax:26,ay:27,phase:2.9},{ax:21,ay:30,phase:5},{ax:28,ay:25,phase:.8},{ax:24,ay:29,phase:3.6}];
+ const onMove=e=>{if(e.pointerType==='touch')return;const r=scene.getBoundingClientRect();targetX=Math.max(-1,Math.min(1,((e.clientX-r.left)/r.width-.5)*2));targetY=Math.max(-1,Math.min(1,((e.clientY-r.top)/r.height-.5)*2));};
+ const onLeave=()=>{targetX=0;targetY=0;hovered.clear();};
+ scene.addEventListener('pointermove',onMove,{passive:true});scene.addEventListener('pointerleave',onLeave);
+ cards.forEach(c=>{
+  c.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')hovered.add(c)});
+  c.addEventListener('pointerleave',()=>hovered.delete(c));
+  c.addEventListener('focusin',()=>hovered.add(c));
+  c.addEventListener('focusout',()=>hovered.delete(c));
+  c.addEventListener('click',e=>{if(!e.target.closest('a'))pinned=!pinned});
+  c.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target===c){e.preventDefault();pinned=!pinned}});
+ });
+ function animate(now){
+  const dt=lastTime?Math.min(now-lastTime,40):16.7;lastTime=now;
+  if(reduced.matches||mobile.matches){cards.forEach(c=>c.style.transform='none');raf=requestAnimationFrame(animate);return;}
+  const alpha=1-Math.exp(-dt/300);
+  const slowing=pinned||hovered.size>0;
+  speed+=((slowing?0:1)-speed)*(1-Math.exp(-dt/430));
+  pointerWeight+=((slowing?.30:1)-pointerWeight)*alpha;
+  smoothX+=(targetX-smoothX)*alpha;smoothY+=(targetY-smoothY)*alpha;
+  phaseTime+=dt*speed;
+  cards.forEach((card,i)=>{const o=offsets[i%offsets.length],a=phaseTime*.00068+o.phase;
+   const x=Math.sin(a)*o.ax+smoothX*pointerWeight*(i%2?17:23);
+   const y=Math.cos(a*.83)*o.ay+smoothY*pointerWeight*(i%2?16:12);
+   card.style.transform='translate3d('+x.toFixed(2)+'px,'+y.toFixed(2)+'px,0)';
+  });
+  raf=requestAnimationFrame(animate);
+ }
+ raf=requestAnimationFrame(animate);
+ stopPressMotion=()=>{cancelAnimationFrame(raf);scene.removeEventListener('pointermove',onMove);scene.removeEventListener('pointerleave',onLeave);};
+}
+
 function lang(code){
  const copy=tr[code];document.documentElement.lang=code;
  document.querySelectorAll('[data-t]').forEach(node=>{const val=copy[node.dataset.t];if(val!==undefined)node.textContent=val});
