@@ -2290,3 +2290,20 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
 #press .press-more figcaption a {
   font-weight:500;
 }
+
+
+/* Desktop-only auto-hide of the existing sticky navigation after Home.
+   The approved header colors, opacity, blur, size and typography are untouched. */
+@media (min-width:761px) {
+ .site-head {
+  transition:transform .42s ease,opacity .42s ease;
+ }
+ .site-head.after-hero.nav-auto-hidden:not(:focus-within) {
+  transform:translateY(-105%);
+  opacity:0;
+  pointer-events:none;
+ }
+}
+@media (min-width:761px) and (prefers-reduced-motion:reduce) {
+ .site-head {transition:none;}
+}
