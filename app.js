@@ -211,7 +211,7 @@ if(location.hash){
   hideTimer=window.setTimeout(()=>{
    if(!head.matches(':focus-within'))head.classList.add('nav-auto-hidden');
    hideTimer=null;
-  },600);
+  },1500);
  }
  function update(){
   scheduled=false;
