@@ -156,7 +156,8 @@ function scrollToSection(target, behavior='smooth'){
  }
  const head=document.querySelector('.site-head');
  const headerHeight=head ? head.getBoundingClientRect().height : 0;
- const top=Math.round(target.getBoundingClientRect().top+window.scrollY-headerHeight-22);
+ const pressOffset=target.id==='press'?120:0;
+ const top=Math.round(target.getBoundingClientRect().top+window.scrollY-headerHeight-22+pressOffset);
  window.scrollTo({top:Math.max(0,top),behavior});
 }
 
