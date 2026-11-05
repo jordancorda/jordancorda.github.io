@@ -2526,3 +2526,10 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
  .hero .hero-cinema-links{gap:10px !important;}
  .hero .hero-cinema-links a{font-size:9px !important;}
 }
+
+
+/* Mobile Safari hero viewport seam fix — bottom background only. */
+@media (max-width:760px) {
+ .hero { height:calc(100dvh + 28px) !important; min-height:calc(100dvh + 28px) !important; }
+ .hero .hero-inner { height:100dvh !important; }
+}
