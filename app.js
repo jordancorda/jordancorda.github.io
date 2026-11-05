@@ -192,18 +192,63 @@ if(location.hash){
  const head=document.querySelector('.site-head');
  const hero=document.querySelector('.hero');
  if(!head || !hero) return;
+ // Desktop only: keep the existing header appearance, but hide it
+ // after 1.5s without scrolling beyond the first section.
+ const desktop=window.matchMedia('(min-width:761px)');
  let scheduled=false;
+ let hideTimer=null;
+ let pastHero=false;
+ let lastY=window.scrollY;
+ function reveal(){
+  head.classList.remove('nav-auto-hidden');
+ }
+ function cancelHide(){
+  if(hideTimer!==null){clearTimeout(hideTimer);hideTimer=null;}
+ }
+ function scheduleHide(){
+  cancelHide();
+  if(!desktop.matches||!pastHero)return;
+  hideTimer=window.setTimeout(()=>{
+   if(!head.matches(':focus-within'))head.classList.add('nav-auto-hidden');
+   hideTimer=null;
+  },1500);
+ }
  function update(){
   scheduled=false;
   const heroBottom=hero.getBoundingClientRect().bottom;
   const headHeight=head.getBoundingClientRect().height;
-  const pastHero=heroBottom <= headHeight;
+  const wasPastHero=pastHero;
+  pastHero=heroBottom<=headHeight;
   head.classList.toggle('after-hero',pastHero);
+  if(!desktop.matches||!pastHero){
+   cancelHide();
+   reveal();
+  }else if(!wasPastHero){
+   reveal();
+   scheduleHide();
+  }
  }
  function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(update);}}
- window.addEventListener('scroll',schedule,{passive:true});
- window.addEventListener('resize',schedule,{passive:true});
+ function onScroll(){
+  const moved=Math.abs(window.scrollY-lastY)>1;
+  lastY=window.scrollY;
+  if(desktop.matches&&moved){reveal();scheduleHide();}
+  schedule();
+ }
+ function onTopPointer(e){
+  if(desktop.matches&&pastHero&&e.clientY<=28){
+   reveal();
+   scheduleHide();
+  }
+ }
+ window.addEventListener('scroll',onScroll,{passive:true});
+ window.addEventListener('resize',()=>{schedule();lastY=window.scrollY;},{passive:true});
+ document.addEventListener('pointermove',onTopPointer,{passive:true});
+ head.addEventListener('focusin',()=>{cancelHide();reveal();});
+ head.addEventListener('focusout',()=>scheduleHide());
+ desktop.addEventListener('change',()=>{schedule();if(!desktop.matches){cancelHide();reveal();}else scheduleHide();});
  schedule();
+ requestAnimationFrame(()=>{if(desktop.matches&&pastHero)scheduleHide();});
 })();
 
 $('#it').addEventListener('click',()=>lang('it'));
