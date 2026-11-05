@@ -2237,3 +2237,21 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
   html[lang="en"] .hero .hero-content > .role::before {content:"JAZZ VIBRAPHONIST";}
   html[lang="en"] .hero .hero-content > .role::after {content:"COMPOSER";}
 }
+
+
+/* Approved Press float preview: original typography and layout retained. */
+#press {position:relative;isolation:isolate;}
+#press .press-card {transform:translate3d(0,0,0);will-change:transform;position:relative;z-index:2;}
+#press .press-card blockquote {cursor:pointer;}
+#press .press-card:focus-visible {outline:1px solid rgba(23,103,133,.45);outline-offset:12px;}
+#press .press-notes {transform:none !important;}
+#press .press-more {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(22px,3vw,46px);margin-top:96px;margin-bottom:62px;align-items:start;min-height:220px;}
+#press .press-more .press-card {max-width:none;min-width:0;}
+#press .press-more blockquote {font-size:clamp(18px,1.6vw,24px);line-height:1.38;color:#303438;min-height:95px;}
+#press .press-more figcaption {font-size:12px;line-height:1.45;color:#53575b;}
+#press .press-more figcaption a {color:#53575b;text-decoration:none;}
+#press .press-more figcaption a:hover {text-decoration:underline;}
+@media(max-width:900px){#press .press-more{grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 26px;}}
+@media(max-width:520px){#press .press-more{grid-template-columns:1fr;gap:34px;min-height:0;margin-top:50px;}#press .press-more blockquote{min-height:0;}}
+@media(max-width:760px){#press .press-card{transform:none !important;will-change:auto;}}
+@media(prefers-reduced-motion:reduce){#press .press-card{transform:none !important;will-change:auto;}}
