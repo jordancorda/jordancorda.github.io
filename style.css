@@ -2255,3 +2255,25 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
 @media(max-width:520px){#press .press-more{grid-template-columns:1fr;gap:34px;min-height:0;margin-top:50px;}#press .press-more blockquote{min-height:0;}}
 @media(max-width:760px){#press .press-card{transform:none !important;will-change:auto;}}
 @media(prefers-reduced-motion:reduce){#press .press-card{transform:none !important;will-change:auto;}}
+
+
+/* Approved Press photo background, matching the more-visible preview.
+   Only the Press section's full-bleed backdrop is changed. */
+#press.press-section::before {
+ background-image:
+  linear-gradient(90deg,rgba(255,253,250,.88) 0%,rgba(255,253,250,.72) 28%,rgba(255,253,250,.51) 55%,rgba(255,253,250,.31) 79%,rgba(255,253,250,.28) 100%),
+  linear-gradient(0deg,rgba(255,253,250,.72),transparent 17%,transparent 82%,rgba(255,253,250,.52)),
+  url("assets/JORDAN_foto%20F.Di%20Benedetto_high-5.jpg");
+ background-repeat:no-repeat;
+ background-size:cover;
+ background-position:center 36%;
+}
+@media (max-width:760px) {
+ #press.press-section::before {
+  background-image:
+   linear-gradient(rgba(255,253,250,.58),rgba(255,253,250,.58)),
+   url("assets/JORDAN_foto%20F.Di%20Benedetto_high-5.jpg");
+  background-size:cover;
+  background-position:68% center;
+ }
+}
