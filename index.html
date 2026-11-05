@@ -92,11 +92,19 @@
 </header>
 <main id="top">
  <section class="hero" aria-labelledby="artist-name">
+  <video class="hero-cinema-video" id="hero-cinema-video" muted autoplay playsinline loop preload="none" aria-hidden="true">
+   <source data-src="assets/Awakenings_teaser_1080p_web.mp4" type="video/mp4">
+  </video>
+  <div class="hero-cinema-veil" aria-hidden="true"></div>
   <img class="hero-photo" src="assets/jordan-scontornato-editoriale.png" alt="Jordan Corda con le bacchette da vibrafono" fetchpriority="high">
   <div class="shell hero-inner">
    <div class="hero-content">
     <h1 id="artist-name">JORDAN CORDA</h1>
     <p class="role" data-t="role">VIBRAFONISTA JAZZ · COMPOSITORE</p>
+    <div class="hero-cinema-links">
+     <a href="#music"><span class="cinema-it">SCOPRI AWAKENINGS</span><span class="cinema-en">DISCOVER AWAKENINGS</span></a>
+     <a href="#music" class="cinema-watch-video"><span class="cinema-it">GUARDA IL VIDEO</span><span class="cinema-en">WATCH VIDEO</span></a>
+    </div>
     <a class="hero-scroll-cue" href="#music" aria-label="Scopri la musica di Jordan Corda / Explore Jordan Corda’s music">
      <span class="hero-scroll-cue__label--it">Scorri per scoprire</span>
      <span class="hero-scroll-cue__label--en">Scroll to explore</span>
@@ -255,6 +263,27 @@
       art.setAttribute('aria-pressed', 'false');
     }
   });
+})();
+</script>
+<script>
+/* Home cinematic background — desktop only, all other media players unchanged. */
+(() => {
+ const player=document.getElementById('hero-cinema-video');
+ const desktop=window.matchMedia('(min-width:761px)');
+ if(!player)return;
+ const activate=()=>{
+  if(!desktop.matches){player.pause();return;}
+  const source=player.querySelector('source');
+  if(source&&!source.src&&source.dataset.src){
+   source.src=source.dataset.src;
+   player.load();
+  }
+  player.muted=true;
+  const pending=player.play();
+  if(pending&&typeof pending.catch==='function')pending.catch(()=>{});
+ };
+ activate();
+ desktop.addEventListener?.('change',activate);
 })();
 </script>
 </body>
