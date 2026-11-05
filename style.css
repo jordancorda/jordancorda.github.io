@@ -2533,3 +2533,23 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
  .hero { height:calc(100dvh + 28px) !important; min-height:calc(100dvh + 28px) !important; }
  .hero .hero-inner { height:100dvh !important; }
 }
+
+
+/* Mobile-only persistent hamburger navigation — approved 2026-11-05. */
+@media (max-width:760px) {
+ .site-head .mobile-menu-trigger {
+  position:fixed !important;
+  top:10px !important;
+  left:20px !important;
+  right:auto !important;
+  z-index:32 !important;
+ }
+ .site-head .nav,
+ .site-head.after-hero .nav {
+  position:fixed !important;
+  top:56px !important;
+  left:12px !important;
+  right:auto !important;
+  z-index:31 !important;
+ }
+}
