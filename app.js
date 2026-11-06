@@ -13,73 +13,26 @@ function records(){
 function press(){
  const uk=d.press.find(x=>x.name==='UK Vibe');
  const paris=d.press.find(x=>x.name==='Paris-Move');
- const others=d.press.filter(x=>!['UK Vibe','Paris-Move','Blue in Green Radio'].includes(x.name));
+ const indie=d.press.find(x=>x.name==='IndiePerCui');
  const langCode=document.documentElement.lang==='en'?'en':'it';
  const allReviewsLabel=tr[langCode].allReviews;
- const allReviewsUrl='https://www.amaedizioni.it/artist?id=55';
  const ukFull='I have listened over and over to this release and, for the sake of balance, went looking for fault. I could not find any. Awakenings is a statement by a band who know one another well, making music that is first and foremost enjoyable to them and to the listener. There is no showboating. It’s marvellous.';
- const quoteDoppio='memoria, migrazione e consapevolezza individuale trovano una corrispondenza nella materia sonora';
- const quoteIndie='ambienti sonori di indiscutibile bellezza';
- const doppioUrl='https://doppiojazz.it/wp/en/2026/09/26/awakenings-di-jordan-corda-il-linguaggio-jazzistico-fra-dimensione-geografica-e-indagine-interiore-a-ma-records-2026/';
- const indieUrl='https://indiepercui.altervista.org/jordan-corda-awakenings-a-ma-records/';
- $('#pressContent').innerHTML=`<div class="press-feature">
- <figure class="press-card press-primary"><blockquote lang="en">“${escapeHTML(ukFull)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams · 5/5</span></a></figcaption></figure>
- <div class="press-aside">
-  <figure class="press-card press-secondary"><blockquote lang="en">“${escapeHTML(paris.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(paris.url)}" target="_blank" rel="noopener noreferrer">Paris-Move <span>· Thierry De Clemensat</span></a></figcaption></figure>
-  <div class="press-tiles">
-   <figure class="press-card press-tertiary"><blockquote lang="it">“${escapeHTML(quoteDoppio)}”</blockquote><figcaption><a href="${escapeHTML(doppioUrl)}" target="_blank" rel="noopener noreferrer">Doppio Jazz <span>· Francesco Cataldo Verrina</span></a></figcaption></figure>
-   <figure class="press-card press-accent"><blockquote lang="it">“${escapeHTML(quoteIndie)}”</blockquote><figcaption><a href="${escapeHTML(indieUrl)}" target="_blank" rel="noopener noreferrer">IndiePerCui</a></figcaption></figure>
+ const reviewLinks=[
+  ...d.press.filter(x=>!['UK Vibe','Paris-Move','IndiePerCui','Blue in Green Radio'].includes(x.name)),
+  {name:'A Proposito di Jazz',url:'https://www.online-jazz.net/2026/10/01/i-nostri-cd-le-autumn-leaves-di-amedeo-furfaro-prima-parte/'},
+  {name:'Windout Magazine',url:'https://www.amaedizioni.it/review?id=541&lang=en'}
+ ];
+ $('#pressContent').innerHTML=`<div class="press-editorial">
+  <figure class="press-card press-editorial-lead"><blockquote lang="en">“${escapeHTML(ukFull)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams · 5/5</span></a></figcaption></figure>
+  <div class="press-editorial-pair">
+   <figure class="press-card press-editorial-paris"><blockquote lang="en">“${escapeHTML(paris.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(paris.url)}" target="_blank" rel="noopener noreferrer">Paris-Move <span>· Thierry De Clemensat</span></a></figcaption></figure>
+   <figure class="press-card press-editorial-indie"><blockquote lang="it">“ambienti sonori di indiscutibile bellezza”</blockquote><figcaption><a href="${escapeHTML(indie.url)}" target="_blank" rel="noopener noreferrer">IndiePerCui <span>· Marco Zordan</span></a></figcaption></figure>
   </div>
- </div>
- </div><div class="press-more" aria-label="Altre quattro recensioni">
- <figure class="press-card" tabindex="0"><blockquote lang="it">“Il passato, in Awakenings, non è un luogo in cui tornare. È una materia da attraversare.”</blockquote><figcaption><a href="https://www.jazzinfamily.com/jordan-corda-awakenings/" target="_blank" rel="noopener noreferrer">Jazz in Family <span>· Mario Ferraioli</span></a></figcaption></figure>
- <figure class="press-card" tabindex="0"><blockquote lang="it">“Jordan Corda rivive gli episodi più importanti della sua vita in un concept album”</blockquote><figcaption><a href="https://www.jazzconvention.net/?id=1310&amp;option=com_content&amp;view=article" target="_blank" rel="noopener noreferrer">Jazz Convention <span>· Fabio Ciminiera</span></a></figcaption></figure>
- <figure class="press-card" tabindex="0"><blockquote lang="it">“al panorama internazionale del contemporary jazz”</blockquote><figcaption><a href="https://www.online-jazz.net/2026/10/01/i-nostri-cd-le-autumn-leaves-di-amedeo-furfaro-prima-parte/" target="_blank" rel="noopener noreferrer">A Proposito di Jazz <span>· Amedeo Furfaro</span></a></figcaption></figure>
- <figure class="press-card" tabindex="0"><blockquote lang="en">“Fresh writing and linear improvisation.”</blockquote><figcaption><a href="https://www.amaedizioni.it/review?id=541&amp;lang=en" target="_blank" rel="noopener noreferrer">Windout Magazine <span>· Giuseppe Maggioli</span></a></figcaption></figure>
- </div><div class="press-notes">${others.map(item=>`<a href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.name)}</a>`).join('')}<a href="${allReviewsUrl}" target="_blank" rel="noopener noreferrer">${allReviewsLabel}</a></div>`;
- initPressMotion();
-}
-let stopPressMotion=null;
-function initPressMotion(){
- if(stopPressMotion)stopPressMotion();
- const cards=[...document.querySelectorAll('#press .press-card')];
- const scene=document.querySelector('#press');
- if(!scene||!cards.length)return;
- cards.forEach(c=>{c.tabIndex=0;c.title='Clicca sulla frase per fermare o riprendere il movimento';});
- const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
- const mobile=window.matchMedia('(max-width: 760px)');
- let targetX=0,targetY=0,smoothX=0,smoothY=0,phaseTime=0,lastTime=0,speed=1,pointerWeight=1,pinned=false,raf=0;
- const hovered=new Set();
- const offsets=[{ax:23,ay:30,phase:.1},{ax:29,ay:22,phase:2.1},{ax:24,ay:27,phase:4},{ax:26,ay:21,phase:1.3},{ax:26,ay:27,phase:2.9},{ax:21,ay:30,phase:5},{ax:28,ay:25,phase:.8},{ax:24,ay:29,phase:3.6}];
- const onMove=e=>{if(e.pointerType==='touch')return;const r=scene.getBoundingClientRect();targetX=Math.max(-1,Math.min(1,((e.clientX-r.left)/r.width-.5)*2));targetY=Math.max(-1,Math.min(1,((e.clientY-r.top)/r.height-.5)*2));};
- const onLeave=()=>{targetX=0;targetY=0;hovered.clear();};
- scene.addEventListener('pointermove',onMove,{passive:true});scene.addEventListener('pointerleave',onLeave);
- cards.forEach(c=>{
-  c.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')hovered.add(c)});
-  c.addEventListener('pointerleave',()=>hovered.delete(c));
-  c.addEventListener('focusin',()=>hovered.add(c));
-  c.addEventListener('focusout',()=>hovered.delete(c));
-  c.addEventListener('click',e=>{if(!e.target.closest('a'))pinned=!pinned});
-  c.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target===c){e.preventDefault();pinned=!pinned}});
- });
- function animate(now){
-  const dt=lastTime?Math.min(now-lastTime,40):16.7;lastTime=now;
-  if(reduced.matches||mobile.matches){cards.forEach(c=>c.style.transform='none');raf=requestAnimationFrame(animate);return;}
-  const alpha=1-Math.exp(-dt/300);
-  const slowing=pinned||hovered.size>0;
-  speed+=((slowing?0:1)-speed)*(1-Math.exp(-dt/430));
-  pointerWeight+=((slowing?.30:1)-pointerWeight)*alpha;
-  smoothX+=(targetX-smoothX)*alpha;smoothY+=(targetY-smoothY)*alpha;
-  phaseTime+=dt*speed;
-  cards.forEach((card,i)=>{const o=offsets[i%offsets.length],a=phaseTime*.00068+o.phase;
-   const x=Math.sin(a)*o.ax+smoothX*pointerWeight*(i%2?17:23);
-   const y=Math.cos(a*.83)*o.ay+smoothY*pointerWeight*(i%2?16:12);
-   card.style.transform='translate3d('+x.toFixed(2)+'px,'+y.toFixed(2)+'px,0)';
-  });
-  raf=requestAnimationFrame(animate);
- }
- raf=requestAnimationFrame(animate);
- stopPressMotion=()=>{cancelAnimationFrame(raf);scene.removeEventListener('pointermove',onMove);scene.removeEventListener('pointerleave',onLeave);};
+  <div class="press-editorial-links">
+   <div class="press-editorial-links-title">${langCode==='en'?'MORE REVIEWS':'ALTRE RECENSIONI'}</div>
+   <div class="press-notes">${reviewLinks.map(item=>`<a href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.name)}</a>`).join('')}<a href="https://www.amaedizioni.it/artist?id=55" target="_blank" rel="noopener noreferrer">${tr[langCode].allReviews}</a></div>
+  </div>
+ </div>`;
 }
 
 function lang(code){
