@@ -2612,3 +2612,9 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
 @media(max-width:760px){
  #video .video-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px !important;}
 }
+
+
+/* Biography summary contrast fix only — approved. */
+.about-contact-section #bioDetails > summary {color:#252a2c !important;}
+.about-contact-section #bioDetails > summary:hover,
+.about-contact-section #bioDetails > summary:focus-visible {color:#176785 !important;}
