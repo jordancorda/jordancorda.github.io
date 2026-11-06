@@ -2232,9 +2232,9 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
     line-height:1.35;
     letter-spacing:.005em;
   }
-  .hero .hero-content > .role::before {content:"VIBRAFONISTA JAZZ";}
+  .hero .hero-content > .role::before {content:"VIBRAFONISTA";}
   .hero .hero-content > .role::after {content:"COMPOSITORE";}
-  html[lang="en"] .hero .hero-content > .role::before {content:"JAZZ VIBRAPHONIST";}
+  html[lang="en"] .hero .hero-content > .role::before {content:"VIBRAPHONIST";}
   html[lang="en"] .hero .hero-content > .role::after {content:"COMPOSER";}
 }
 
@@ -2484,9 +2484,9 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
   line-height:1.5 !important;color:#c8e8ee !important;
   font-weight:650 !important;letter-spacing:.14em !important;
  }
- .hero .hero-content>.role::before {content:"VIBRAFONISTA JAZZ" !important;}
+ .hero .hero-content>.role::before {content:"VIBRAFONISTA" !important;}
  .hero .hero-content>.role::after {content:" / COMPOSITORE" !important;}
- html[lang="en"] .hero .hero-content>.role::before {content:"JAZZ VIBRAPHONIST" !important;}
+ html[lang="en"] .hero .hero-content>.role::before {content:"VIBRAPHONIST" !important;}
  html[lang="en"] .hero .hero-content>.role::after {content:" / COMPOSER" !important;}
  .hero .hero-cinema-links {
   position:absolute !important;left:0 !important;right:0 !important;
