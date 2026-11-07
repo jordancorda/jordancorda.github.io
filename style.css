@@ -2618,3 +2618,14 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
 .about-contact-section #bioDetails > summary {color:#252a2c !important;}
 .about-contact-section #bioDetails > summary:hover,
 .about-contact-section #bioDetails > summary:focus-visible {color:#176785 !important;}
+
+
+/* Approved Awakenings credits visibility only — light album section. */
+#music .album-credits .lineup p,
+#music .album-credits .lineup .label-credit strong {
+ color:#273035 !important;
+}
+#music .album-credits .lineup span,
+#music .album-credits .lineup .label-credit span {
+ color:#5c5854 !important;
+}
