@@ -315,6 +315,55 @@
    hideMobileControl();
   }
  };
+ // The Home background skips the final black/end-card sequence.
+ // The full-length Awakenings player below is deliberately untouched.
+ let homeCutAt=null;
+ let consecutiveDarkFrames=0;
+ const sampleCanvas=document.createElement('canvas');
+ sampleCanvas.width=20;
+ sampleCanvas.height=12;
+ const sampleContext=sampleCanvas.getContext('2d',{willReadFrequently:true});
+ const loopBeforeEndCard=()=>{
+  consecutiveDarkFrames=0;
+  try{player.currentTime=0;}catch(e){}
+ };
+ const monitorHomeEnding=()=>{
+  const duration=player.duration;
+  if(!Number.isFinite(duration)||duration<=0||player.readyState<2)return;
+  if(homeCutAt!==null){
+   if(player.currentTime>=homeCutAt)loopBeforeEndCard();
+   return;
+  }
+  if(player.currentTime<duration*.52)return;
+  if(sampleContext){
+   try{
+    sampleContext.drawImage(player,0,0,20,12);
+    const px=sampleContext.getImageData(0,0,20,12).data;
+    let veryDark=0,total=0;
+    for(let i=0;i<px.length;i+=4){
+     const light=px[i]*.2126+px[i+1]*.7152+px[i+2]*.0722;
+     total+=light;
+     if(light<18)veryDark++;
+    }
+    consecutiveDarkFrames=(veryDark/240>.985 && total/240<8)?consecutiveDarkFrames+1:0;
+    if(consecutiveDarkFrames>=2){
+     homeCutAt=Math.max(1,player.currentTime-.12);
+     loopBeforeEndCard();
+     return;
+    }
+   }catch(e){ /* Use the safety cutoff below if canvas capture is unavailable. */ }
+  }
+  // Prevent the end card from appearing if black-frame analysis is blocked.
+  if(player.currentTime>=duration*.88)loopBeforeEndCard();
+ };
+ player.addEventListener('timeupdate',monitorHomeEnding);
+ if(typeof player.requestVideoFrameCallback==='function'){
+  const onBackgroundFrame=()=>{
+   monitorHomeEnding();
+   player.requestVideoFrameCallback(onBackgroundFrame);
+  };
+  player.requestVideoFrameCallback(onBackgroundFrame);
+ }
  player.addEventListener('playing',hideMobileControl);
  player.addEventListener('error',revealMobileControl);
  player.addEventListener('pause',()=>{if(!document.hidden)revealMobileControl();});
