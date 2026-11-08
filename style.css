@@ -2705,3 +2705,16 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
   color:rgba(247,244,237,.9) !important;
  }
 }
+
+/* Approved 2026-11-09: keep initial desktop nav in same position as scrolled nav. */
+@media (min-width:761px) {
+ .site-head:not(.after-hero) .head-inner {
+  justify-content:flex-start !important;
+ }
+ .site-head:not(.after-hero) .nav {
+  left:calc(-1 * clamp(22px,5.4vw,82px)) !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  justify-content:flex-start !important;
+ }
+}
