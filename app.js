@@ -10,43 +10,15 @@ const tr={
 function records(){
  $('#recordList').innerHTML=d.albums.map(a=>`<article class="record"><a class="record-cover" href="${escapeHTML(a.spotify)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(a.title)} — Spotify"><img src="assets/${escapeHTML(a.local_cover)}" loading="lazy" alt="${escapeHTML(a.title)} — album cover"></a><h3><a href="${escapeHTML(a.spotify)}" target="_blank" rel="noopener noreferrer">${escapeHTML(a.title)}</a></h3><p>${escapeHTML(a.project)} · ${escapeHTML(a.year)}</p></article>`).join('');
 }
-function press(){
- const uk=d.press.find(x=>x.name==='UK Vibe');
- const paris=d.press.find(x=>x.name==='Paris-Move');
- const indie=d.press.find(x=>x.name==='IndiePerCui');
- const langCode=document.documentElement.lang==='en'?'en':'it';
- const allReviewsLabel=tr[langCode].allReviews;
- const ukFull='I have listened over and over to this release and, for the sake of balance, went looking for fault. I could not find any. Awakenings is a statement by a band who know one another well, making music that is first and foremost enjoyable to them and to the listener. There is no showboating. It’s marvellous.';
- const reviewLinks=[
-  ...d.press.filter(x=>!['UK Vibe','Paris-Move','IndiePerCui','Blue in Green Radio'].includes(x.name)),
-  {name:'A Proposito di Jazz',url:'https://www.online-jazz.net/2026/10/01/i-nostri-cd-le-autumn-leaves-di-amedeo-furfaro-prima-parte/'},
-  {name:'Windout Magazine',url:'https://www.amaedizioni.it/review?id=541&lang=en'}
- ];
- $('#pressContent').innerHTML=`<div class="press-editorial">
-  <div class="press-editorial-columns">
-   <figure class="press-card press-editorial-lead"><blockquote lang="en">“${escapeHTML(ukFull)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams · 5/5</span></a></figcaption></figure>
-   <div class="press-editorial-pair">
-    <figure class="press-card press-editorial-paris"><blockquote lang="en">“${escapeHTML(paris.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(paris.url)}" target="_blank" rel="noopener noreferrer">Paris-Move <span>· Thierry De Clemensat</span></a></figcaption></figure>
-    <figure class="press-card press-editorial-indie"><blockquote lang="it">“ambienti sonori di indiscutibile bellezza”</blockquote><figcaption><a href="${escapeHTML(indie.url)}" target="_blank" rel="noopener noreferrer">IndiePerCui <span>· Marco Zordan</span></a></figcaption></figure>
-   </div>
-  </div>
-  <div class="press-editorial-links">
-   <div class="press-notes">${reviewLinks.map(item=>`<a href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.name)}</a>`).join('')}</div>
-   <a class="press-editorial-all-reviews" href="https://www.amaedizioni.it/artist?id=55" target="_blank" rel="noopener noreferrer">${tr[langCode].allReviews} — A.MA Records</a>
-  </div>
- </div>`;
-}
-
 function lang(code){
  const copy=tr[code];document.documentElement.lang=code;
  document.querySelectorAll('[data-t]').forEach(node=>{const val=copy[node.dataset.t];if(val!==undefined)node.textContent=val});
  $('#bioShort').textContent=d.bio[code][0];
  $('#bioLong').innerHTML=d.bio[code].slice(1).map(p=>`<p>${escapeHTML(p)}</p>`).join('');
  for(const id of ['it','en'])$('#'+id).setAttribute('aria-pressed',id===code?'true':'false');
- press();
  try{localStorage.setItem('jc_epk_language',code)}catch(e){}
 }
-records();press();
+records();
 // Spotify album preview is embedded directly and remains playable within the page.
 document.querySelectorAll('.video-box').forEach(box=>{
  const button=box.querySelector('button');
