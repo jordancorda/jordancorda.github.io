@@ -2693,3 +2693,15 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
  #press .press-editorial-paris blockquote,
  #press .press-editorial-indie blockquote{font-size:clamp(20px,5vw,25px) !important;}
 }
+
+
+/* Approved 2026-11-09: match initial desktop Home nav typography to scrolled nav. */
+@media (min-width:761px) {
+ .site-head:not(.after-hero) .nav {gap:clamp(14px,2vw,30px) !important;}
+ .site-head:not(.after-hero) .nav a {
+  font-size:13px !important;
+  font-weight:600 !important;
+  letter-spacing:.035em !important;
+  color:rgba(247,244,237,.9) !important;
+ }
+}
