@@ -2629,3 +2629,67 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
 #music .album-credits .lineup .label-credit span {
  color:#5c5854 !important;
 }
+
+
+/* Approved original-style Press composition: long UK review left, two equally tall right. */
+#press .press-editorial{max-width:1120px !important;margin:0 auto !important;}
+#press .press-editorial-columns{
+ display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+ align-items:stretch !important;gap:clamp(34px,5vw,76px) !important;
+ margin:0 0 clamp(50px,5vw,78px) !important;
+}
+#press .press-editorial-lead{
+ max-width:none !important;margin:0 !important;text-align:left !important;
+ align-self:start !important;
+}
+#press .press-editorial-lead blockquote{
+ font-size:clamp(23px,2.25vw,33px) !important;line-height:1.37 !important;
+ letter-spacing:-.025em !important;margin:0 0 22px !important;
+ font-weight:450 !important;
+}
+#press .press-editorial-pair{
+ display:flex !important;flex-direction:column !important;
+ justify-content:space-between !important;align-items:stretch !important;
+ gap:clamp(32px,4vw,62px) !important;padding:0 !important;
+}
+#press .press-editorial-paris,
+#press .press-editorial-indie{margin:0 !important;align-self:stretch !important;text-align:left !important;}
+#press .press-editorial-paris blockquote{
+ font-size:clamp(21px,1.95vw,29px) !important;line-height:1.39 !important;
+ font-weight:450 !important;margin:0 0 18px !important;
+}
+#press .press-editorial-indie blockquote{
+ font-size:clamp(21px,1.8vw,27px) !important;line-height:1.39 !important;
+ font-weight:450 !important;margin:0 0 18px !important;
+}
+#press .press-editorial-links{
+ padding:24px 0 0 !important;
+ border-top:1px solid rgba(45,58,63,.24) !important;
+}
+#press .press-editorial-links .press-notes{
+ display:flex !important;justify-content:flex-start !important;
+ flex-wrap:wrap !important;gap:12px 26px !important;
+ margin:0 0 24px !important;padding:0 !important;
+}
+#press .press-editorial-links .press-notes a{
+ color:#4b5356 !important;border-bottom:1px solid rgba(45,58,63,.27) !important;
+ padding-bottom:5px !important;font-size:12px !important;
+}
+#press .press-editorial-all-reviews{
+ display:table !important;width:max-content !important;max-width:100% !important;
+ color:#176785 !important;text-decoration:none !important;
+ border-bottom:1px solid rgba(23,103,133,.45) !important;
+ padding-bottom:6px !important;font-size:12px !important;font-weight:600 !important;
+}
+#press .press-editorial-all-reviews:hover{border-bottom-color:#176785 !important;}
+@media(max-width:760px){
+ #press .press-editorial-columns{
+  grid-template-columns:1fr !important;gap:34px !important;margin-bottom:42px !important;
+ }
+ #press .press-editorial-lead blockquote{
+  font-size:clamp(22px,5.8vw,29px) !important;
+ }
+ #press .press-editorial-pair{gap:32px !important;}
+ #press .press-editorial-paris blockquote,
+ #press .press-editorial-indie blockquote{font-size:clamp(20px,5vw,25px) !important;}
+}
