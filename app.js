@@ -23,14 +23,16 @@ function press(){
   {name:'Windout Magazine',url:'https://www.amaedizioni.it/review?id=541&lang=en'}
  ];
  $('#pressContent').innerHTML=`<div class="press-editorial">
-  <figure class="press-card press-editorial-lead"><blockquote lang="en">“${escapeHTML(ukFull)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams · 5/5</span></a></figcaption></figure>
-  <div class="press-editorial-pair">
-   <figure class="press-card press-editorial-paris"><blockquote lang="en">“${escapeHTML(paris.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(paris.url)}" target="_blank" rel="noopener noreferrer">Paris-Move <span>· Thierry De Clemensat</span></a></figcaption></figure>
-   <figure class="press-card press-editorial-indie"><blockquote lang="it">“ambienti sonori di indiscutibile bellezza”</blockquote><figcaption><a href="${escapeHTML(indie.url)}" target="_blank" rel="noopener noreferrer">IndiePerCui <span>· Marco Zordan</span></a></figcaption></figure>
+  <div class="press-editorial-columns">
+   <figure class="press-card press-editorial-lead"><blockquote lang="en">“${escapeHTML(ukFull)}”</blockquote><figcaption><a href="${escapeHTML(uk.url)}" target="_blank" rel="noopener noreferrer">UK Vibe <span>· Steve Williams · 5/5</span></a></figcaption></figure>
+   <div class="press-editorial-pair">
+    <figure class="press-card press-editorial-paris"><blockquote lang="en">“${escapeHTML(paris.excerpt)}”</blockquote><figcaption><a href="${escapeHTML(paris.url)}" target="_blank" rel="noopener noreferrer">Paris-Move <span>· Thierry De Clemensat</span></a></figcaption></figure>
+    <figure class="press-card press-editorial-indie"><blockquote lang="it">“ambienti sonori di indiscutibile bellezza”</blockquote><figcaption><a href="${escapeHTML(indie.url)}" target="_blank" rel="noopener noreferrer">IndiePerCui <span>· Marco Zordan</span></a></figcaption></figure>
+   </div>
   </div>
   <div class="press-editorial-links">
-   <div class="press-editorial-links-title">${langCode==='en'?'MORE REVIEWS':'ALTRE RECENSIONI'}</div>
-   <div class="press-notes">${reviewLinks.map(item=>`<a href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.name)}</a>`).join('')}<a href="https://www.amaedizioni.it/artist?id=55" target="_blank" rel="noopener noreferrer">${tr[langCode].allReviews}</a></div>
+   <div class="press-notes">${reviewLinks.map(item=>`<a href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.name)}</a>`).join('')}</div>
+   <a class="press-editorial-all-reviews" href="https://www.amaedizioni.it/artist?id=55" target="_blank" rel="noopener noreferrer">${tr[langCode].allReviews} — A.MA Records</a>
   </div>
  </div>`;
 }
