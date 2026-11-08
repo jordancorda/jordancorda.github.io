@@ -2718,3 +2718,50 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
   justify-content:flex-start !important;
  }
 }
+
+
+/* Approved 2026-11-09: left-aligned initial nav with animated right shift on scroll. */
+@media(min-width:761px){
+ body:not(.press-page) .site-head .head-inner,
+ body:not(.press-page) .site-head:not(.after-hero) .head-inner{
+  justify-content:flex-start !important;
+  gap:0 !important;
+ }
+ /* Flex spacer moves both navigation and language controls as one group. */
+ body:not(.press-page) .site-head .head-inner::before,
+ body:not(.press-page) .site-head:not(.after-hero) .head-inner::before{
+  display:block !important;
+  content:"" !important;
+  flex:0 1 0% !important;
+  min-width:0 !important;
+  transition:flex-grow .75s cubic-bezier(.22,1,.36,1) !important;
+ }
+ body:not(.press-page) .site-head.after-hero .head-inner::before{
+  flex-grow:1 !important;
+ }
+ /* Remove the old negative offset that clipped Awakenings against the viewport. */
+ body:not(.press-page) .site-head .nav,
+ body:not(.press-page) .site-head.after-hero .nav,
+ body:not(.press-page) .site-head:not(.after-hero) .nav{
+  position:relative !important;
+  left:0 !important;
+  transform:none !important;
+  margin:0 !important;
+  justify-content:flex-start !important;
+  flex:0 0 auto !important;
+  gap:clamp(12px,1.6vw,25px) !important;
+ }
+ body:not(.press-page) .site-head .lang,
+ body:not(.press-page) .site-head:not(.after-hero) .lang{
+  margin-left:clamp(12px,1.6vw,25px) !important;
+  flex:0 0 auto !important;
+ }
+}
+@media (min-width:761px) and (max-width:900px){
+ body:not(.press-page) .site-head .nav,
+ body:not(.press-page) .site-head:not(.after-hero) .nav{gap:10px !important;}
+ body:not(.press-page) .site-head .lang{margin-left:10px !important;}
+}
+@media(min-width:761px) and (prefers-reduced-motion:reduce){
+ body:not(.press-page) .site-head .head-inner::before{transition:none !important;}
+}
