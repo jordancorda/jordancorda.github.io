@@ -2765,3 +2765,23 @@ html[lang="en"] #music .album-story-compact-buy .album-purchase-en {display:inli
 @media(min-width:761px) and (prefers-reduced-motion:reduce){
  body:not(.press-page) .site-head .head-inner::before{transition:none !important;}
 }
+
+/* Approved: bring only the initial desktop Home nav group closer to the left edge. */
+@media(min-width:761px){
+ body:not(.press-page) .site-head .nav,
+ body:not(.press-page) .site-head .lang{
+  transition:transform .75s cubic-bezier(.22,1,.36,1) !important;
+ }
+ body:not(.press-page) .site-head:not(.after-hero) .nav,
+ body:not(.press-page) .site-head:not(.after-hero) .lang{
+  transform:translateX(-clamp(30px,3.6vw,56px)) !important;
+ }
+ body:not(.press-page) .site-head.after-hero .nav,
+ body:not(.press-page) .site-head.after-hero .lang{
+  transform:translateX(0) !important;
+ }
+}
+@media(min-width:761px) and (prefers-reduced-motion:reduce){
+ body:not(.press-page) .site-head .nav,
+ body:not(.press-page) .site-head .lang{transition:none !important;}
+}
