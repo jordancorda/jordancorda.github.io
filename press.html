@@ -135,6 +135,14 @@ body.press-page .site-head.is-scrolled .lang button[aria-pressed=true]{color:#17
  .press-links{padding:70px 0 85px}
 }
 @media(prefers-reduced-motion:reduce){body.press-page .site-head{transition:none}}
+
+/* Press-only override: the shared stylesheet forces html/body to off-white.
+   Put the photograph and veil ABOVE the body background but BELOW Press content. */
+html:has(body.press-page){background:#1a0e0b !important;}
+body.press-page{background:#1a0e0b !important;color:#f7f2ee !important;}
+body.press-page::before{z-index:0 !important;}
+body.press-page::after{z-index:1 !important;}
+body.press-page > main,body.press-page > footer{position:relative;z-index:2;}
 </style>
 </head>
 <body class="press-page">
