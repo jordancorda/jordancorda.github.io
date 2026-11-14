@@ -72,6 +72,16 @@ window.JC_EPK_DATA = {
       "local_cover": "covers/we-are-all-together-cover.jpg"
     },
     {
+      "title": "Confluence",
+      "project": "Small//Clear",
+      "year": "2026",
+      "label": "BIJ Records",
+      "url": "https://open.spotify.com/album/1KLWu0q40lKBOyUV2NSN7G",
+      "spotify": "https://open.spotify.com/album/1KLWu0q40lKBOyUV2NSN7G",
+      "id": "album-confluence",
+      "local_cover": "covers/confluence-cover.jpg"
+    },
+    {
       "title": "Rizoma",
       "project": "Gianrico Manca Transition",
       "year": "2018",
